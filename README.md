@@ -4,4 +4,5 @@ Members:
 - Salgado, Joseph Paolo C.
 
 Leader: Netanyahu
+
 Section: COM241
