@@ -1,0 +1,75 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(
+    165deg,
+    #d9dbff 0%,
+    #e6e8ff 32%,
+    #f6f7ff 68%,
+    #ffffff 100%
+  );
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: border-color 140ms ease;
+}
+
+.card:hover {
+  border-color: var(--blue-500);
+}
+
+.card__thumb {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  margin: 10px 10px 0;
+  border-radius: 14px;
+  background-image: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--accent) 34%, #ffffff) 0%,
+    color-mix(in srgb, var(--accent) 14%, #ffffff) 58%,
+    color-mix(in srgb, var(--accent) 4%, #ffffff) 100%
+  );
+  border: 1px dashed rgba(99, 102, 241, 0.28);
+}
+
+.card__thumb-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(11, 42, 91, 0.42);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px 20px;
+  flex: 1 1 auto;
+}
+
+.card__title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--blue-900);
+}
+
+.card__copy {
+  font-size: 14px;
+  color: #4f5872;
+}
+
+.card__link {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue-700);
+}
+
+.card__link:hover {
+  color: var(--blue-900);
+  text-decoration: underline;
+}
