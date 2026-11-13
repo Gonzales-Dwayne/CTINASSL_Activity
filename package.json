@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "db:schema": "npm --prefix db run schema",
+    "db:reset": "npm --prefix db run reset",
+    "db:check": "npm --prefix db run check",
+    "db:demo": "npm --prefix db run demo",
+    "db:inspect": "npm --prefix db run inspect"
   },
   "dependencies": {
     "react": "^19.3.1",
