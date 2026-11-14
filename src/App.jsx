@@ -1,65 +1,100 @@
-import Header from './components/Header'
-import Carousel from './components/Carousel'
-import CategoryCard from './components/CategoryCard'
-import './App.css'
-
-const CATEGORIES = [
-  {
-    id: 'mechanical',
-    name: 'Mechanical Keyboard',
-    blurb: 'Hot-swappable boards with crisp, consistent keyfeel.',
-    color: '#1d4ed8',
-  },
-  {
-    id: 'magnetic',
-    name: 'Magnetic Keyboard',
-    blurb: 'Hall-effect switches with adjustable actuation.',
-    color: '#2563eb',
-  },
-  {
-    id: 'switches',
-    name: 'Switch',
-    blurb: 'Linear, tactile and clicky sets, pre-lubed.',
-    color: '#3b82f6',
-  },
-  {
-    id: 'keycaps',
-    name: 'Keycaps',
-    blurb: 'PBT sets in every profile and layout.',
-    color: '#60a5fa',
-  },
-]
+import { useState } from 'react'
+import CataloguePage from './CataloguePage'
+import LandingPage from './LandingPage'
+import ProductPage from './ProductPage'
+import SearchResultsPage from './SearchResultsPage'
+import SiteHeader from './components/SiteHeader'
 
 function App() {
+  const [view, setView] = useState('home')
+  const [category, setCategory] = useState(null)
+  const [subcategory, setSubcategory] = useState(null)
+  const [query, setQuery] = useState('')
+  const [productId, setProductId] = useState(null)
+  const [cart, setCart] = useState([])
+
+  function navigate(
+    nextView,
+    nextCategory = null,
+    nextQuery = '',
+    nextProductId = null,
+  ) {
+    setView(nextView)
+    setCategory(nextCategory)
+    setSubcategory(null)
+    setQuery(nextQuery)
+    setProductId(nextProductId)
+    window.scrollTo({ top: 0 })
+  }
+
+  function addToCart(product, qty) {
+    setCart((lines) => {
+      const existing = lines.find((line) => line.productId === product.id)
+      if (existing) {
+        return lines.map((line) =>
+          line.productId === product.id
+            ? { ...line, qty: line.qty + qty }
+            : line,
+        )
+      }
+      return [...lines, { productId: product.id, qty }]
+    })
+  }
+
+  function changeQty(id, delta) {
+    setCart((lines) =>
+      lines.map((line) =>
+        line.productId === id
+          ? { ...line, qty: Math.max(1, line.qty + delta) }
+          : line,
+      ),
+    )
+  }
+
+  function removeLine(id) {
+    setCart((lines) => lines.filter((line) => line.productId !== id))
+  }
+
+  function selectCategory(nextCategory) {
+    setCategory(nextCategory)
+    setSubcategory(null)
+  }
+
   return (
-    <div className="site" id="top">
-      <Header />
+    <>
+      <SiteHeader
+        solid={view !== 'home'}
+        onNavigate={navigate}
+        cart={cart}
+        onQty={changeQty}
+        onRemove={removeLine}
+      />
 
-      <main className="site__main">
-        <Carousel />
+      {view === 'search' ? (
+        <SearchResultsPage query={query} onNavigate={navigate} />
+      ) : null}
 
-        <section
-          className="categories"
-          id="shop"
-          aria-labelledby="categories-title"
-        >
-          <div className="categories__head">
-            <h2 className="categories__title" id="categories-title">
-              Shop by category
-            </h2>
-            <p className="categories__note">
-              Four ways to upgrade your desk setup.
-            </p>
-          </div>
+      {view === 'catalogue' ? (
+        <CataloguePage
+          category={category}
+          subcategory={subcategory}
+          onCategory={selectCategory}
+          onSubcategory={setSubcategory}
+          onNavigate={navigate}
+        />
+      ) : null}
 
-          <div className="categories__grid">
-            {CATEGORIES.map((category) => (
-              <CategoryCard key={category.id} {...category} />
-            ))}
-          </div>
-        </section>
-      </main>
-    </div>
+      {view === 'product' ? (
+        <ProductPage
+          key={productId}
+          productId={productId}
+          onNavigate={navigate}
+          onAdd={addToCart}
+        />
+      ) : null}
+
+      {view === 'home' ? <LandingPage onNavigate={navigate} /> : null}
+    </>
   )
 }
 

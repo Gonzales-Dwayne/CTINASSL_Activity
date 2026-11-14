@@ -1,0 +1,152 @@
+.page {
+  min-height: 100svh;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+  font-size: var(--fs-16);
+}
+
+.main {
+  padding: 160px 120px 96px;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* Category tabs --------------------------------------------------------- */
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 32px;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--height-40);
+  padding: 0 16px;
+  border: var(--border-1);
+  border-radius: var(--br-60);
+  background-color: var(--color-white);
+  color: var(--color-dimgray);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.tab:hover {
+  color: var(--color-black);
+  border-color: var(--color-dimgray);
+}
+
+.tabActive {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.tabCount {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+/* Subcategory row ------------------------------------------------------- */
+
+.subtabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 28px;
+}
+
+.subtab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: var(--br-60);
+  background-color: var(--color-whitesmoke);
+  color: var(--color-dimgray);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.subtab:hover {
+  color: var(--color-black);
+}
+
+.subtabActive {
+  background-color: var(--color-royalblue);
+  color: var(--color-white);
+}
+
+/* Heading --------------------------------------------------------------- */
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--fs-36);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.count {
+  margin: 0;
+  font-size: var(--fs-16);
+  color: var(--color-gray);
+}
+
+/* Product grid ---------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 40px 24px;
+}
+
+@media (max-width: 1500px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .main {
+    padding: 150px 60px 80px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 140px 20px 64px;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
