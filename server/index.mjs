@@ -31,6 +31,7 @@ function toProduct(doc) {
     priceCents: doc.priceCents,
     stock: doc.stock,
     description: doc.description,
+    details: doc.details ?? [],
     image: doc.image,
   }
 }

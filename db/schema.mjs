@@ -63,6 +63,7 @@ const SCHEMAS = {
         priceCents: { bsonType: 'int', minimum: 0 },
         stock: { bsonType: 'int', minimum: 0 },
         description: { bsonType: 'string' },
+        details: { bsonType: 'array', items: { bsonType: 'string' } },
         image: { bsonType: 'string' },
       },
     },

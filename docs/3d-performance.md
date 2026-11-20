@@ -1,10 +1,15 @@
 # Hero 3D — performance notes
 
-> **PARKED.** The hero currently runs the original, simple version of the model
-> stage (full-quality GLBs from `src/lofree_flow_lineup/glb/`, environment
-> lighting, no quality tiers, no lazy loading, no billboards). Everything below
-> documents the optimisation pass that was built and then rolled back — keep it
-> as a reference for picking this up again.
+> **CURRENT STATE.** The hero renders the web-ready models from
+> `src/lofree_flow_web/models/` (Y-up, metres, bottom-centre pivot, quantized
+> geometry, ~700-850 KB each). Colourways come from `KHR_materials_variants`
+> inside each file, applied at load time in `HeroShowcase.jsx`
+> (`flow84` → White, `flow100` → White, `flow_lite84` → Flamingo,
+> `flow2_84_mac` → Nebula). `manifest.json` in that folder lists parts, sizes
+> and variant names.
+>
+> The optimisation pass below was built and then rolled back — keep it as a
+> reference for picking this up again.
 
 How the Lofree hero stage is built, what it costs, and how to profile it.
 

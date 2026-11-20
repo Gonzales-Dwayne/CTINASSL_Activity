@@ -38,6 +38,7 @@ try {
       category: product.category,
       subcategory: product.subcategory ?? null,
       description: product.description,
+      details: product.details,
       image: product.image,
     }
 

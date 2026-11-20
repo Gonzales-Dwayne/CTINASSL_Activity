@@ -4,13 +4,59 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
 import styles from './HeroShowcase.module.css'
 
-// The four colourways straight from src/lofree_flow_lineup.
-import flow84 from '../lofree_flow_lineup/glb/flow84_black.glb?url'
-import flow100 from '../lofree_flow_lineup/glb/flow100_white.glb?url'
-import flowLite84 from '../lofree_flow_lineup/glb/flow_lite84_flamingo.glb?url'
-import flow2 from '../lofree_flow_lineup/glb/flow2_84_space_gray.glb?url'
+// Web-ready models from src/lofree_flow_web: Y-up, metres, bottom-centre
+// pivot, and every colourway packed as a KHR_materials_variants material.
+import flow84 from '../lofree_flow_web/models/flow84.glb?url'
+import flow100 from '../lofree_flow_web/models/flow100.glb?url'
+import flowLite84 from '../lofree_flow_web/models/flow_lite84.glb?url'
+import flow2 from '../lofree_flow_web/models/flow2_84_mac.glb?url'
 
-const MODELS = [flow84, flow100, flowLite84, flow2]
+// Colourways picked to read against the dark stage: light boards with a warm
+// accent, plus a pale lavender Flow 2 for the fourth slide.
+const MODELS = [
+  { file: flow84, variant: 'White' },
+  { file: flow100, variant: 'White' },
+  { file: flowLite84, variant: 'Flamingo' },
+  { file: flow2, variant: 'Nebula' },
+]
+
+// The web models store each colourway as a material variant instead of a
+// separate file. Swap the primitive materials to the requested variant.
+async function applyVariant(gltf, variantName) {
+  const parser = gltf.parser
+  const json = parser.json
+  const variants = json.extensions?.KHR_materials_variants?.variants ?? []
+  const variantIndex = variants.findIndex((entry) => entry.name === variantName)
+  if (variantIndex < 0) return
+
+  const pending = []
+
+  gltf.scene.traverse((object) => {
+    if (!object.isMesh) return
+
+    const association = parser.associations.get(object)
+    const primitive =
+      json.meshes?.[association?.meshes]?.primitives?.[
+        association?.primitives ?? 0
+      ]
+    const mappings =
+      primitive?.extensions?.KHR_materials_variants?.mappings
+    if (!mappings) return
+
+    const mapping = mappings.find((entry) =>
+      entry.variants.includes(variantIndex),
+    )
+    if (!mapping) return
+
+    pending.push(
+      parser.getDependency('material', mapping.material).then((material) => {
+        object.material = material
+      }),
+    )
+  })
+
+  await Promise.all(pending)
+}
 
 // Pick the model that matches the product name on the current slide.
 function modelIndexForName(name = '') {
@@ -61,7 +107,7 @@ function HeroShowcase({ activeName = '' }) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio ?? 1, 2))
     renderer.outputColorSpace = THREE.SRGBColorSpace
     renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = 0.92
+    renderer.toneMappingExposure = 0.96
     host.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
@@ -83,7 +129,7 @@ function HeroShowcase({ activeName = '' }) {
     scene.add(keyLight)
 
     // Faint cool bounce from the front so the underside is not crushed.
-    const bounceLight = new THREE.DirectionalLight(0xbcd2ff, 0.46)
+    const bounceLight = new THREE.DirectionalLight(0xbcd2ff, 0.5)
     bounceLight.position.set(0.4, -1.6, 2.4)
     scene.add(bounceLight)
 
@@ -92,7 +138,7 @@ function HeroShowcase({ activeName = '' }) {
     rimLight.position.set(-2.6, 1.6, -2.6)
     scene.add(rimLight)
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.12))
+    scene.add(new THREE.AmbientLight(0xffffff, 0.16))
 
     const shadowTexture = createShadowTexture()
     shadowTexture.colorSpace = THREE.SRGBColorSpace
@@ -126,13 +172,15 @@ function HeroShowcase({ activeName = '' }) {
           if (disposed) return
 
           loader.load(
-            file,
-            (gltf) => {
+            MODELS[index].file,
+            async (gltf) => {
+              if (disposed) return
+
+              await applyVariant(gltf, MODELS[index].variant)
               if (disposed) return
 
               const model = gltf.scene
-              // The lineup is modelled Z-up; glTF viewers expect Y-up.
-              model.rotation.x = -Math.PI / 2
+              // Already Y-up metres; normalise the width for the stage.
               model.updateMatrixWorld(true)
 
               const firstBox = new THREE.Box3().setFromObject(model)

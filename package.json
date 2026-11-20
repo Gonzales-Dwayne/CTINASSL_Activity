@@ -16,7 +16,8 @@
     "db:check": "npm --prefix db run check",
     "db:demo": "npm --prefix db run demo",
     "db:inspect": "npm --prefix db run inspect",
-    "catalog:export": "node server/export-catalog.mjs"
+    "catalog:export": "node server/export-catalog.mjs",
+    "catalog:describe": "node server/update-descriptions.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

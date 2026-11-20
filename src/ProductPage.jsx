@@ -109,7 +109,7 @@ function ProductPage({ productId, onNavigate, onAdd }) {
             </p>
 
             <ul className={styles.details}>
-              {detailsFor(product).map((detail) => (
+              {(product.details ?? detailsFor(product)).map((detail) => (
                 <li key={detail}>{detail}</li>
               ))}
             </ul>
