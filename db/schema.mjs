@@ -59,9 +59,11 @@ const SCHEMAS = {
         name: { bsonType: 'string' },
         slug: { bsonType: 'string' },
         category: { bsonType: 'string' },
+        subcategory: { bsonType: ['string', 'null'] },
         priceCents: { bsonType: 'int', minimum: 0 },
         stock: { bsonType: 'int', minimum: 0 },
         description: { bsonType: 'string' },
+        details: { bsonType: 'array', items: { bsonType: 'string' } },
         image: { bsonType: 'string' },
       },
     },
@@ -110,7 +112,7 @@ const INDEXES = {
   ],
   products: [
     { keys: { slug: 1 }, options: { unique: true } },
-    { keys: { category: 1 } },
+    { keys: { category: 1, subcategory: 1 } },
     { keys: { priceCents: 1 } },
     {
       keys: { name: 'text', description: 'text' },

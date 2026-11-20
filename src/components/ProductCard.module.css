@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  transition: transform 220ms ease;
+}
+
+.card:hover .thumb {
+  transform: translateY(-4px);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-darkgray-100);
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.price {
+  font-size: var(--fs-16);
+  font-weight: 600;
+  color: var(--color-black);
+}

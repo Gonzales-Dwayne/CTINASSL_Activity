@@ -1,0 +1,231 @@
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+  font-size: var(--fs-16);
+}
+
+.top {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 120px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.brandMark {
+  font-size: var(--fs-36);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.brandName {
+  font-size: var(--fs-20);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.back {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-gray);
+  cursor: pointer;
+}
+
+.back:hover {
+  color: var(--color-black);
+}
+
+.main {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 64px 24px 96px;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.title {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: -8px 0 8px;
+  color: var(--color-gray);
+  font-size: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+.field input {
+  height: 48px;
+  padding: 0 16px;
+  border: var(--border-1);
+  border-radius: 12px;
+  background-color: var(--color-white);
+  font: inherit;
+  color: inherit;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--color-royalblue);
+}
+
+.passwordRow {
+  position: relative;
+  display: flex;
+}
+
+.passwordRow input {
+  width: 100%;
+  padding-right: 72px;
+}
+
+.reveal {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-gray);
+  cursor: pointer;
+}
+
+.error {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.submit {
+  height: 52px;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.demo {
+  margin-top: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.demoTitle {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-darkgray-100);
+}
+
+.demoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px dashed var(--color-darkgray-200);
+  border-radius: 10px;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  color: var(--color-dimgray);
+  text-align: left;
+  cursor: pointer;
+}
+
+.demoRow:hover {
+  border-color: var(--color-royalblue);
+  color: var(--color-black);
+}
+
+.demoPassword {
+  font-family: ui-monospace, monospace;
+  color: var(--color-gray);
+}
+
+@media (max-width: 900px) {
+  .top {
+    padding: 0 20px;
+    height: 80px;
+  }
+
+  .brandName {
+    display: none;
+  }
+}
+
+.switchMode {
+  margin-top: 14px;
+  border: 0;
+  background: none;
+  color: var(--color-royalblue);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.switchMode:hover {
+  text-decoration: underline;
+}

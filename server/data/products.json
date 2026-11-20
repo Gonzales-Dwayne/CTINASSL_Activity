@@ -1,0 +1,808 @@
+[
+  {
+    "name": "Keychron K2 Pro",
+    "slug": "mechanical-keyboards-keychron-k2-pro",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 599000,
+    "stock": 32,
+    "description": "75% (84-key) wireless board with a gasket mount, hot-swap sockets, QMK/VIA support, Bluetooth 5.1 and USB-C.",
+    "image": "#1d4ed8",
+    "details": [
+      "75% (84-key) layout",
+      "Gasket mount with hot-swap sockets",
+      "QMK/VIA programmable",
+      "Bluetooth 5.1 and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron K8 Pro",
+    "slug": "mechanical-keyboards-keychron-k8-pro",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 425000,
+    "stock": 25,
+    "description": "TKL (87-key) take on the Pro platform: gasket mount, hot-swap sockets, QMK/VIA, Bluetooth 5.1 and USB-C.",
+    "image": "#2563eb",
+    "details": [
+      "TKL (87-key) layout",
+      "Gasket mount with hot-swap sockets",
+      "QMK/VIA programmable",
+      "Bluetooth 5.1 and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron V1 Max",
+    "slug": "mechanical-keyboards-keychron-v1-max",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 535000,
+    "stock": 25,
+    "description": "75% (81-key) gasket-mounted board with hot-swap sockets, QMK/VIA and 2.4 GHz, Bluetooth and USB-C.",
+    "image": "#3b82f6",
+    "details": [
+      "75% (81-key) layout",
+      "Gasket mount with hot-swap sockets",
+      "QMK/VIA programmable",
+      "2.4 GHz, Bluetooth and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron V3 Max",
+    "slug": "mechanical-keyboards-keychron-v3-max",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 389000,
+    "stock": 5,
+    "description": "TKL (87-key) version of the V Max platform: gasket mount, hot-swap sockets, QMK/VIA and 2.4 GHz, Bluetooth and USB-C.",
+    "image": "#60a5fa",
+    "details": [
+      "TKL (87-key) layout",
+      "Gasket mount with hot-swap sockets",
+      "QMK/VIA programmable",
+      "2.4 GHz, Bluetooth and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron Q1 Max",
+    "slug": "mechanical-keyboards-keychron-q1-max",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 479000,
+    "stock": 32,
+    "description": "75% (81-key) full-aluminium board with a double-gasket mount, hot-swap sockets, QMK/VIA and 2.4 GHz, Bluetooth and USB-C connectivity.",
+    "image": "#93b4f7",
+    "details": [
+      "75% (81-key) layout",
+      "Full aluminium case, double-gasket mount",
+      "Hot-swap sockets, QMK/VIA programmable",
+      "2.4 GHz, Bluetooth and USB-C"
+    ]
+  },
+  {
+    "name": "Lofree Flow 84",
+    "slug": "mechanical-keyboards-lofree-flow-84",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 429000,
+    "stock": 12,
+    "description": "Low-profile 84-key (75%) board with an all-aluminium case and frame, a gasket mount with IXPE and Poron foam, rose-gold side and foot plates and two RGB side strips. 316.7 × 126.6 × 24.5 mm — Black and White.",
+    "image": "#1d4ed8",
+    "details": [
+      "Low-profile 84-key (75%) layout",
+      "All-aluminium case and frame, gasket mount with IXPE and Poron foam",
+      "Rose-gold side and foot plates, two RGB side strips",
+      "316.7 × 126.6 × 24.5 mm — Black and White"
+    ]
+  },
+  {
+    "name": "Lofree Flow Lite 84",
+    "slug": "mechanical-keyboards-lofree-flow-lite-84",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 749000,
+    "stock": 45,
+    "description": "Low-profile 84-key board with a gasket mount, a USB-C port and power/mode slider on the rear edge, and a side volume roller. 316.8 × 138.9 × 23.5 mm — Off-White, Marble and Flamingo.",
+    "image": "#2563eb",
+    "details": [
+      "Low-profile 84-key layout",
+      "Gasket-mounted case",
+      "Rear USB-C plus power/mode slider, side volume roller",
+      "316.8 × 138.9 × 23.5 mm — Off-White, Marble and Flamingo"
+    ]
+  },
+  {
+    "name": "Lofree Flow 100",
+    "slug": "mechanical-keyboards-lofree-flow-100",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 619000,
+    "stock": 18,
+    "description": "Low-profile 100-key board with an all-aluminium case and frame, a gasket mount with IXPE and Poron foam, rose-gold side and foot plates and two RGB side strips. 373.7 × 126.6 × 26 mm — Black and White.",
+    "image": "#3b82f6",
+    "details": [
+      "Low-profile 100-key layout",
+      "All-aluminium case and frame, gasket mount with IXPE and Poron foam",
+      "Rose-gold side and foot plates, two RGB side strips",
+      "373.7 × 126.6 × 26 mm — Black and White"
+    ]
+  },
+  {
+    "name": "Lofree EDGE",
+    "slug": "mechanical-keyboards-lofree-edge",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 529000,
+    "stock": 4,
+    "description": "84-key (75%) ultra-slim low-profile board, 15 mm thin at 485 g, with a 3K carbon-fibre top case and magnesium-alloy bottom, PCB-gasket mount, Kailh POM Switch 2.0 and dye-sub PBT keycaps. Bluetooth 5.3 or USB-C, up to 1000 Hz wired.",
+    "image": "#60a5fa",
+    "details": [
+      "84-key (75%) low-profile, 15 mm thin at 485 g",
+      "3K carbon-fibre top case, magnesium-alloy bottom",
+      "Kailh POM Switch 2.0 on a PCB-gasket mount",
+      "Bluetooth 5.3 or USB-C — up to 1000 Hz wired"
+    ]
+  },
+  {
+    "name": "Lofree Block",
+    "slug": "mechanical-keyboards-lofree-block",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 689000,
+    "stock": 48,
+    "description": "98-key (96%) wireless board with hot-swappable linear switches, gasket mount, dye-sub PBT keycaps, two retro knobs (volume and mode) and a small status display. Bluetooth 5.0, 2.4 GHz or USB-C; 387 × 165 × 40.5 mm, up to 80 hours per charge.",
+    "image": "#93b4f7",
+    "details": [
+      "98-key (96%) layout with dye-sub PBT keycaps",
+      "Hot-swappable linear Lofree × TTC switches, gasket mount",
+      "Volume and mode knobs plus a small status display",
+      "Bluetooth 5.0, 2.4 GHz or USB-C — up to 80 hours"
+    ]
+  },
+  {
+    "name": "Keychron Q1 HE",
+    "slug": "magnetic-keyboards-keychron-q1-he",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 745000,
+    "stock": 18,
+    "description": "75% (81-key) full-aluminium Hall-effect board with rapid trigger, adjustable actuation and 2.4 GHz plus USB-C.",
+    "image": "#1d4ed8",
+    "details": [
+      "75% (81-key) full-aluminium Hall-effect layout",
+      "Rapid trigger with adjustable actuation",
+      "Per-key calibration",
+      "2.4 GHz and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron Q1 HE Special Edition",
+    "slug": "magnetic-keyboards-keychron-q1-he-special-edition",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 890000,
+    "stock": 13,
+    "description": "Special-edition Q1 HE: aluminium 75% Hall-effect board with rapid trigger, adjustable actuation and a unique finish.",
+    "image": "#2563eb",
+    "details": [
+      "75% (81-key) aluminium Hall-effect layout, special-edition finish",
+      "Rapid trigger with adjustable actuation",
+      "Per-key calibration",
+      "2.4 GHz and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron Q1 HE Carbon Black",
+    "slug": "magnetic-keyboards-keychron-q1-he-carbon-black",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 829000,
+    "stock": 15,
+    "description": "The Q1 HE in Carbon Black — aluminium 75% Hall-effect board with rapid trigger and adjustable actuation.",
+    "image": "#3b82f6",
+    "details": [
+      "75% (81-key) aluminium Hall-effect layout, Carbon Black finish",
+      "Rapid trigger with adjustable actuation",
+      "Per-key calibration",
+      "2.4 GHz and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron Q1 HE Shell White",
+    "slug": "magnetic-keyboards-keychron-q1-he-shell-white",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 799000,
+    "stock": 26,
+    "description": "The Q1 HE in Shell White — aluminium 75% Hall-effect board with rapid trigger and adjustable actuation.",
+    "image": "#60a5fa",
+    "details": [
+      "75% (81-key) aluminium Hall-effect layout, Shell White finish",
+      "Rapid trigger with adjustable actuation",
+      "Per-key calibration",
+      "2.4 GHz and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron K2 HE",
+    "slug": "magnetic-keyboards-keychron-k2-he",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 559000,
+    "stock": 33,
+    "description": "75% (84-key) Hall-effect board with adjustable actuation, rapid trigger and per-key calibration, wired and 2.4 GHz.",
+    "image": "#93b4f7",
+    "details": [
+      "75% (84-key) Hall-effect layout",
+      "Adjustable actuation with rapid trigger",
+      "Per-key calibration",
+      "Wired and 2.4 GHz"
+    ]
+  },
+  {
+    "name": "Keychron K2 HE Special Edition",
+    "slug": "magnetic-keyboards-keychron-k2-he-special-edition",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 629000,
+    "stock": 6,
+    "description": "Special-edition K2 HE with a distinct case finish, keeping the 75% Hall-effect layout, rapid trigger and adjustable actuation.",
+    "image": "#1d4ed8",
+    "details": [
+      "75% (84-key) Hall-effect layout, special-edition finish",
+      "Adjustable actuation with rapid trigger",
+      "Per-key calibration",
+      "Wired and 2.4 GHz"
+    ]
+  },
+  {
+    "name": "Keychron K2 HE Black",
+    "slug": "magnetic-keyboards-keychron-k2-he-black",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 699000,
+    "stock": 8,
+    "description": "The K2 HE in a blacked-out finish — 75% Hall-effect switches with adjustable actuation and rapid trigger.",
+    "image": "#2563eb",
+    "details": [
+      "75% (84-key) Hall-effect layout in a blacked-out finish",
+      "Adjustable actuation with rapid trigger",
+      "Per-key calibration",
+      "Wired and 2.4 GHz"
+    ]
+  },
+  {
+    "name": "Keychron K4 HE",
+    "slug": "magnetic-keyboards-keychron-k4-he",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 729000,
+    "stock": 40,
+    "description": "96% (100-key) Hall-effect board with adjustable actuation, rapid trigger and per-key calibration.",
+    "image": "#3b82f6",
+    "details": [
+      "96% (100-key) Hall-effect layout",
+      "Adjustable actuation with rapid trigger",
+      "Per-key calibration",
+      "Wired and 2.4 GHz"
+    ]
+  },
+  {
+    "name": "Keychron Q3 HE",
+    "slug": "magnetic-keyboards-keychron-q3-he",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 589000,
+    "stock": 17,
+    "description": "TKL (87-key) full-aluminium Hall-effect board with rapid trigger and adjustable actuation.",
+    "image": "#60a5fa",
+    "details": [
+      "TKL (87-key) full-aluminium Hall-effect layout",
+      "Rapid trigger with adjustable actuation",
+      "Per-key calibration",
+      "2.4 GHz and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron Q5 HE",
+    "slug": "magnetic-keyboards-keychron-q5-he",
+    "category": "Magnetic Keyboards",
+    "subcategory": null,
+    "priceCents": 649000,
+    "stock": 48,
+    "description": "96% (1800 compact) full-aluminium Hall-effect board with rapid trigger and adjustable actuation.",
+    "image": "#93b4f7",
+    "details": [
+      "96% (1800 compact) full-aluminium Hall-effect layout",
+      "Rapid trigger with adjustable actuation",
+      "Per-key calibration",
+      "2.4 GHz and USB-C"
+    ]
+  },
+  {
+    "name": "Keychron K Pro Red",
+    "slug": "switches-keychron-k-pro-red",
+    "category": "Switches",
+    "subcategory": "Linear",
+    "priceCents": 115000,
+    "stock": 45,
+    "description": "Keychron K Pro Red — a light linear switch tuned for fast, smooth typing; sold in packs.",
+    "image": "#1d4ed8",
+    "details": [
+      "Linear switch from Keychron’s K Pro line",
+      "Light and fast for typing or gaming",
+      "Sold in packs for hot-swap builds",
+      "MX-style footprint"
+    ]
+  },
+  {
+    "name": "Keychron K Pro Brown",
+    "slug": "switches-keychron-k-pro-brown",
+    "category": "Switches",
+    "subcategory": "Tactile",
+    "priceCents": 135000,
+    "stock": 12,
+    "description": "Keychron K Pro Brown — a tactile switch with a gentle bump for typing and everyday work; sold in packs.",
+    "image": "#2563eb",
+    "details": [
+      "Tactile switch from Keychron’s K Pro line",
+      "Gentle bump for everyday typing",
+      "Sold in packs for hot-swap builds",
+      "MX-style footprint"
+    ]
+  },
+  {
+    "name": "Keychron K Pro Banana",
+    "slug": "switches-keychron-k-pro-banana",
+    "category": "Switches",
+    "subcategory": "Tactile",
+    "priceCents": 129000,
+    "stock": 25,
+    "description": "Keychron K Pro Banana — a tactile switch with a fuller bump, sold in packs for hot-swap keyboards.",
+    "image": "#3b82f6",
+    "details": [
+      "Tactile switch from Keychron’s K Pro line",
+      "Fuller, rounder bump",
+      "Sold in packs for hot-swap builds",
+      "MX-style footprint"
+    ]
+  },
+  {
+    "name": "Keychron Gateron Jupiter Red",
+    "slug": "switches-keychron-gateron-jupiter-red",
+    "category": "Switches",
+    "subcategory": "Linear",
+    "priceCents": 159000,
+    "stock": 46,
+    "description": "Gateron Jupiter Red — a smooth linear switch from Gateron’s Jupiter line, sold in packs for hot-swap boards.",
+    "image": "#60a5fa",
+    "details": [
+      "Linear switch from Gateron’s Jupiter line",
+      "Smooth, light actuation",
+      "Sold in packs for hot-swap builds",
+      "MX-style footprint"
+    ]
+  },
+  {
+    "name": "Keychron Gateron Jupiter Banana",
+    "slug": "switches-keychron-gateron-jupiter-banana",
+    "category": "Switches",
+    "subcategory": "Tactile",
+    "priceCents": 125000,
+    "stock": 36,
+    "description": "Gateron Jupiter Banana — a rounded tactile switch from Gateron’s Jupiter line, sold in packs.",
+    "image": "#93b4f7",
+    "details": [
+      "Tactile switch from Gateron’s Jupiter line",
+      "Rounded bump on the downstroke",
+      "Sold in packs for hot-swap builds",
+      "MX-style footprint"
+    ]
+  },
+  {
+    "name": "Lofree Ghost",
+    "slug": "switches-lofree-ghost",
+    "category": "Switches",
+    "subcategory": "Linear",
+    "priceCents": 139000,
+    "stock": 29,
+    "description": "Lofree Ghost — a linear low-profile switch for the Flow series, sold in packs for hot-swap boards.",
+    "image": "#1d4ed8",
+    "details": [
+      "Linear low-profile switch for the Flow series",
+      "Light, consistent feel",
+      "Sold in packs for hot-swap boards",
+      "Check the profile against your board"
+    ]
+  },
+  {
+    "name": "Lofree Phantom",
+    "slug": "switches-lofree-phantom",
+    "category": "Switches",
+    "subcategory": "Linear",
+    "priceCents": 165000,
+    "stock": 4,
+    "description": "Lofree Phantom — a linear low-profile switch with a light, consistent feel; sold in packs.",
+    "image": "#2563eb",
+    "details": [
+      "Linear low-profile switch for the Flow series",
+      "Smooth, even travel",
+      "Sold in packs for hot-swap boards",
+      "Check the profile against your board"
+    ]
+  },
+  {
+    "name": "Lofree Wizard",
+    "slug": "switches-lofree-wizard",
+    "category": "Switches",
+    "subcategory": "Tactile",
+    "priceCents": 145000,
+    "stock": 22,
+    "description": "Lofree Wizard — a tactile low-profile switch for the Flow series, sold in packs.",
+    "image": "#3b82f6",
+    "details": [
+      "Tactile low-profile switch for the Flow series",
+      "Defined bump with a short travel",
+      "Sold in packs for hot-swap boards",
+      "Check the profile against your board"
+    ]
+  },
+  {
+    "name": "Lofree Specter",
+    "slug": "switches-lofree-specter",
+    "category": "Switches",
+    "subcategory": "Linear",
+    "priceCents": 175000,
+    "stock": 36,
+    "description": "Lofree Specter — a linear low-profile switch with a smooth travel; sold in packs.",
+    "image": "#60a5fa",
+    "details": [
+      "Linear low-profile switch for the Flow series",
+      "Light actuation with a quiet bottom-out",
+      "Sold in packs for hot-swap boards",
+      "Check the profile against your board"
+    ]
+  },
+  {
+    "name": "Keychron K Pro Mint",
+    "slug": "switches-keychron-k-pro-mint",
+    "category": "Switches",
+    "subcategory": "Tactile",
+    "priceCents": 185000,
+    "stock": 43,
+    "description": "Keychron K Pro Mint — a tactile switch with a crisp, well-defined bump; sold in packs.",
+    "image": "#93b4f7",
+    "details": [
+      "Tactile switch from Keychron’s K Pro line",
+      "Crisp, well-defined bump",
+      "Sold in packs for hot-swap builds",
+      "MX-style footprint"
+    ]
+  },
+  {
+    "name": "GMK Botanical",
+    "slug": "keycaps-gmk-botanical",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 289000,
+    "stock": 21,
+    "description": "GMK Botanical — double-shot ABS keycaps in Cherry profile, in forest green and cream.",
+    "image": "#1d4ed8",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "Forest green and cream colourway",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK Red Samurai",
+    "slug": "keycaps-gmk-red-samurai",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 309000,
+    "stock": 29,
+    "description": "GMK Red Samurai — double-shot ABS keycaps in Cherry profile, pairing red and black with white legends.",
+    "image": "#2563eb",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "Red and black with white legends",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK Dots",
+    "slug": "keycaps-gmk-dots",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 265000,
+    "stock": 17,
+    "description": "GMK Dots — double-shot ABS keycaps in Cherry profile, with a dark base and multicoloured dot legends.",
+    "image": "#3b82f6",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "Dark base with multicoloured dot legends",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK Minimal 2",
+    "slug": "keycaps-gmk-minimal-2",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 259000,
+    "stock": 22,
+    "description": "GMK Minimal 2 — double-shot ABS keycaps in Cherry profile, in a clean white and light-grey colourway.",
+    "image": "#60a5fa",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "White and light-grey colourway",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK Mictlan",
+    "slug": "keycaps-gmk-mictlan",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 349000,
+    "stock": 16,
+    "description": "GMK Mictlan — double-shot ABS keycaps in Cherry profile, in an earthy colourway with teal and gold accents.",
+    "image": "#93b4f7",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "Earthy colourway with teal and gold accents",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK Pharaoh",
+    "slug": "keycaps-gmk-pharaoh",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 359000,
+    "stock": 24,
+    "description": "GMK Pharaoh — double-shot ABS keycaps in Cherry profile, in a sand, gold and deep-blue colourway.",
+    "image": "#1d4ed8",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "Sand, gold and deep-blue colourway",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK Striker",
+    "slug": "keycaps-gmk-striker",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 279000,
+    "stock": 8,
+    "description": "GMK Striker — double-shot ABS keycaps in Cherry profile, in a bright blue and white colourway.",
+    "image": "#2563eb",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "Bright blue and white colourway",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK Metropolis",
+    "slug": "keycaps-gmk-metropolis",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 269000,
+    "stock": 8,
+    "description": "GMK Metropolis — double-shot ABS keycaps in Cherry profile, in a navy, teal and yellow colourway.",
+    "image": "#3b82f6",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "Navy, teal and yellow colourway",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK Blue Samurai",
+    "slug": "keycaps-gmk-blue-samurai",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 319000,
+    "stock": 22,
+    "description": "GMK Blue Samurai — double-shot ABS keycaps in Cherry profile, in a deep blue and white colourway with red accents.",
+    "image": "#60a5fa",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "Deep blue and white with red accents",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "GMK WoB",
+    "slug": "keycaps-gmk-wob",
+    "category": "Keycaps",
+    "subcategory": "Cherry",
+    "priceCents": 329000,
+    "stock": 44,
+    "description": "GMK WoB — “White on Black”: double-shot ABS keycaps in Cherry profile with bright legends on black.",
+    "image": "#93b4f7",
+    "details": [
+      "Double-shot ABS, Cherry profile",
+      "White on Black colourway",
+      "Base kit covers 60% to TKL layouts",
+      "Fits MX-style stems"
+    ]
+  },
+  {
+    "name": "Walnut Wrist Rest",
+    "slug": "accessories-walnut-wrist-rest",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 125000,
+    "stock": 34,
+    "description": "Solid walnut wrist rest, cut to match 60% to TKL boards and finished with a natural oil coat.",
+    "image": "#1d4ed8",
+    "details": [
+      "Solid walnut, natural oil finish",
+      "Cut for 60% to TKL boards",
+      "Non-slip feet on the underside"
+    ]
+  },
+  {
+    "name": "Coiled Cable — Blue",
+    "slug": "accessories-coiled-cable-blue",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 89000,
+    "stock": 35,
+    "description": "Coiled USB-C cable in blue, with a braided jacket and a detachable connector end.",
+    "image": "#2563eb",
+    "details": [
+      "Coiled USB-C cable in blue",
+      "Braided jacket with a detachable end",
+      "Works with most USB-C keyboards"
+    ]
+  },
+  {
+    "name": "Desk Mat XL",
+    "slug": "accessories-desk-mat-xl",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 99000,
+    "stock": 22,
+    "description": "Extra-large cloth desk mat with a stitched edge and a non-slip rubber base.",
+    "image": "#3b82f6",
+    "details": [
+      "Extra-large cloth surface",
+      "Stitched edge, non-slip rubber base",
+      "Room for a keyboard and a mouse"
+    ]
+  },
+  {
+    "name": "Switch Puller",
+    "slug": "accessories-switch-puller",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 25000,
+    "stock": 6,
+    "description": "Switch puller for hot-swap boards, with a slim claw that gets under the plate without bending pins.",
+    "image": "#60a5fa",
+    "details": [
+      "Slim claw for hot-swap boards",
+      "Gets under the plate without bending pins",
+      "Works with plate-mount switches"
+    ]
+  },
+  {
+    "name": "Keycap Puller",
+    "slug": "accessories-keycap-puller",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 22000,
+    "stock": 39,
+    "description": "Wire keycap puller for safely lifting PBT and ABS keycaps without marking the caps.",
+    "image": "#93b4f7",
+    "details": [
+      "Wire puller for keycaps",
+      "Lifts PBT and ABS caps without marking them",
+      "Works on all standard layouts"
+    ]
+  },
+  {
+    "name": "Lube Kit",
+    "slug": "accessories-lube-kit",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 65000,
+    "stock": 4,
+    "description": "Switch lube kit with brushes, tweezers and a small pot of lubricant for stabilisers and switches.",
+    "image": "#1d4ed8",
+    "details": [
+      "Lubricant plus brushes and tweezers",
+      "For switches and stabilisers",
+      "Small pot with a resealable lid"
+    ]
+  },
+  {
+    "name": "Stabilizer Set",
+    "slug": "accessories-stabilizer-set",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 85000,
+    "stock": 41,
+    "description": "Screw-in stabiliser set for spacebar, shifts and enter, pre-clipped for a clean PCB fit.",
+    "image": "#2563eb",
+    "details": [
+      "Screw-in stabilisers for spacebar, shifts and enter",
+      "Pre-clipped for a clean PCB fit",
+      "Fits standard 60% to TKL layouts"
+    ]
+  },
+  {
+    "name": "Case Foam Sheet",
+    "slug": "accessories-case-foam-sheet",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 45000,
+    "stock": 41,
+    "description": "Die-cut foam sheet for the inside of a case, damping ping and tightening up the sound.",
+    "image": "#3b82f6",
+    "details": [
+      "Die-cut foam for the inside of a case",
+      "Damps ping and tightens up the sound",
+      "Trimmable to fit smaller layouts"
+    ]
+  },
+  {
+    "name": "Artisan Keycap",
+    "slug": "accessories-artisan-keycap",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 79500,
+    "stock": 22,
+    "description": "A hand-finished artisan keycap for the Esc or F-row, made to add a single point of character to a build.",
+    "image": "#60a5fa",
+    "details": [
+      "Hand-finished artisan cap for Esc or an F-row key",
+      "Fits MX-style stems",
+      "One-off finish — each cap varies slightly"
+    ]
+  },
+  {
+    "name": "Carry Sleeve",
+    "slug": "accessories-carry-sleeve",
+    "category": "Accessories",
+    "subcategory": null,
+    "priceCents": 69000,
+    "stock": 48,
+    "description": "Padded carry sleeve that fits 60% to 75% keyboards, with a soft inner lining for transport.",
+    "image": "#93b4f7",
+    "details": [
+      "Fits 60% to 75% keyboards",
+      "Padded, soft-lined interior",
+      "Zip closure with a carry loop"
+    ]
+  },
+  {
+    "name": "Lofree Flow Lite 100",
+    "slug": "mechanical-keyboards-lofree-flow-lite-100",
+    "category": "Mechanical Keyboards",
+    "subcategory": null,
+    "priceCents": 549000,
+    "stock": 48,
+    "description": "Low-profile 100-key board with a gasket mount, a rear USB-C port and power/mode slider, and a side volume roller. 374.5 × 138.9 × 23.5 mm — Off-White, Marble and Flamingo.",
+    "image": "#1d4ed8",
+    "details": [
+      "Low-profile 100-key layout",
+      "Gasket-mounted case",
+      "Rear USB-C plus power/mode slider, side volume roller",
+      "374.5 × 138.9 × 23.5 mm — Off-White, Marble and Flamingo"
+    ]
+  }
+]

@@ -153,3 +153,6 @@ dist-ssr
 .vscode/*
 .idea
 .DS_Store
+
+# 3D model converted locally from Keychron's source-available STEP files
+public/models/*.glb

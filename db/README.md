@@ -87,12 +87,12 @@ Exit code is non-zero when something is inconsistent.
 
 ```json
 {
-  "name": "ClackLabs Nova 75",
-  "slug": "clacklabs-nova-75",
-  "category": "Mechanical Keyboard",
+  "name": "Keychron K2 Pro",
+  "slug": "mechanical-keyboards-keychron-k2-pro",
+  "category": "Mechanical Keyboards",
   "priceCents": 599000,
   "stock": 24,
-  "description": "75% aluminum board with gasket mount.",
+  "description": "Mechanical keyboard from Keychron or Lofree. Layout and features vary by model.",
   "image": "#1d4ed8"
 }
 ```
@@ -104,7 +104,7 @@ Exit code is non-zero when something is inconsistent.
   "orderNumber": "CL-1001",
   "userId": "<users._id>",
   "items": [
-    { "productId": "<products._id>", "name": "ClackLabs Nova 75", "unitPriceCents": 599000, "qty": 1 }
+    { "productId": "<products._id>", "name": "Keychron K2 Pro", "unitPriceCents": 599000, "qty": 1 }
   ],
   "totalCents": 599000,
   "status": "paid",

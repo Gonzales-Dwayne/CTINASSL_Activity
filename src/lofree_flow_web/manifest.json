@@ -1,0 +1,413 @@
+{
+ "flow84": {
+  "file": "models/flow84.glb",
+  "sizeKB": 703,
+  "widthMM": 316.7,
+  "heightMM": 24.5,
+  "depthMM": 126.6,
+  "triangles": 40840,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "side_plates",
+   "sidelights",
+   "foot_plates",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Black",
+    "id": "black",
+    "swatch": "#6e7076"
+   },
+   {
+    "name": "White",
+    "id": "white",
+    "swatch": "#f4f4f6"
+   }
+  ]
+ },
+ "flow100": {
+  "file": "models/flow100.glb",
+  "sizeKB": 809,
+  "widthMM": 373.7,
+  "heightMM": 26.0,
+  "depthMM": 126.6,
+  "triangles": 47320,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "side_plates",
+   "sidelights",
+   "foot_plates",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Black",
+    "id": "black",
+    "swatch": "#6e7076"
+   },
+   {
+    "name": "White",
+    "id": "white",
+    "swatch": "#f4f4f6"
+   }
+  ]
+ },
+ "flow2_68": {
+  "file": "models/flow2_68.glb",
+  "sizeKB": 557,
+  "widthMM": 311.6,
+  "heightMM": 21.5,
+  "depthMM": 107.0,
+  "triangles": 32476,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "touch_bar",
+   "status_led",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Space Gray",
+    "id": "space_gray",
+    "swatch": "#9d9fa4"
+   },
+   {
+    "name": "Silver",
+    "id": "silver",
+    "swatch": "#e9eaed"
+   }
+  ]
+ },
+ "flow2_84": {
+  "file": "models/flow2_84.glb",
+  "sizeKB": 714,
+  "widthMM": 341.8,
+  "heightMM": 21.5,
+  "depthMM": 126.0,
+  "triangles": 41500,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "touch_bar",
+   "status_led",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Space Gray",
+    "id": "space_gray",
+    "swatch": "#9d9fa4"
+   },
+   {
+    "name": "Silver",
+    "id": "silver",
+    "swatch": "#e9eaed"
+   }
+  ]
+ },
+ "flow2_84_mac": {
+  "file": "models/flow2_84_mac.glb",
+  "sizeKB": 686,
+  "widthMM": 341.8,
+  "heightMM": 21.5,
+  "depthMM": 126.0,
+  "triangles": 40020,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "touch_bar",
+   "status_led",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Nebula",
+    "id": "nebula",
+    "swatch": "#a7abd6"
+   },
+   {
+    "name": "Petal",
+    "id": "petal",
+    "swatch": "#f5d6da"
+   },
+   {
+    "name": "Volt",
+    "id": "volt",
+    "swatch": "#e8f193"
+   }
+  ]
+ },
+ "flow2_100": {
+  "file": "models/flow2_100.glb",
+  "sizeKB": 820,
+  "widthMM": 398.8,
+  "heightMM": 21.5,
+  "depthMM": 126.0,
+  "triangles": 47980,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "touch_bar",
+   "status_led",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Space Gray",
+    "id": "space_gray",
+    "swatch": "#9d9fa4"
+   },
+   {
+    "name": "Silver",
+    "id": "silver",
+    "swatch": "#e9eaed"
+   }
+  ]
+ },
+ "flow2_100_mac": {
+  "file": "models/flow2_100_mac.glb",
+  "sizeKB": 792,
+  "widthMM": 398.8,
+  "heightMM": 21.5,
+  "depthMM": 126.0,
+  "triangles": 46500,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "touch_bar",
+   "status_led",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Nebula",
+    "id": "nebula",
+    "swatch": "#a7abd6"
+   },
+   {
+    "name": "Petal",
+    "id": "petal",
+    "swatch": "#f5d6da"
+   },
+   {
+    "name": "Volt",
+    "id": "volt",
+    "swatch": "#e8f193"
+   }
+  ]
+ },
+ "flow_lite84": {
+  "file": "models/flow_lite84.glb",
+  "sizeKB": 721,
+  "widthMM": 316.8,
+  "heightMM": 23.5,
+  "depthMM": 138.9,
+  "triangles": 41788,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "mode_switch",
+   "volume_roller",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Off-White",
+    "id": "off_white",
+    "swatch": "#f6f5f0"
+   },
+   {
+    "name": "Marble",
+    "id": "marble",
+    "swatch": "#e9ecee"
+   },
+   {
+    "name": "Flamingo",
+    "id": "flamingo",
+    "swatch": "#fae2e7"
+   }
+  ]
+ },
+ "flow_lite100": {
+  "file": "models/flow_lite100.glb",
+  "sizeKB": 827,
+  "widthMM": 374.5,
+  "heightMM": 23.5,
+  "depthMM": 138.9,
+  "triangles": 48268,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "mode_switch",
+   "volume_roller",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Off-White",
+    "id": "off_white",
+    "swatch": "#f6f5f0"
+   },
+   {
+    "name": "Marble",
+    "id": "marble",
+    "swatch": "#e9ecee"
+   },
+   {
+    "name": "Flamingo",
+    "id": "flamingo",
+    "swatch": "#fae2e7"
+   }
+  ]
+ },
+ "flow_lite2_84": {
+  "file": "models/flow_lite2_84.glb",
+  "sizeKB": 722,
+  "widthMM": 316.8,
+  "heightMM": 23.5,
+  "depthMM": 138.9,
+  "triangles": 41812,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "mode_switch",
+   "display_bezel",
+   "display_screen",
+   "volume_roller",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Black",
+    "id": "black",
+    "swatch": "#6c6d72"
+   },
+   {
+    "name": "White",
+    "id": "white",
+    "swatch": "#f9f9f7"
+   }
+  ]
+ },
+ "flow_lite2_100": {
+  "file": "models/flow_lite2_100.glb",
+  "sizeKB": 828,
+  "widthMM": 374.5,
+  "heightMM": 23.5,
+  "depthMM": 138.9,
+  "triangles": 48292,
+  "parts": [
+   "case",
+   "key_well",
+   "usbc_rim",
+   "usbc_slot",
+   "mode_switch",
+   "display_bezel",
+   "display_screen",
+   "volume_roller",
+   "feet",
+   "keycaps_alpha",
+   "keycaps_mod",
+   "keycaps_accent",
+   "homing_bumps",
+   "legends",
+   "brand_text"
+  ],
+  "variants": [
+   {
+    "name": "Black",
+    "id": "black",
+    "swatch": "#6c6d72"
+   },
+   {
+    "name": "White",
+    "id": "white",
+    "swatch": "#f9f9f7"
+   }
+  ]
+ }
+}
