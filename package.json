@@ -8,18 +8,24 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "api": "node server/index.mjs",
+    "seed": "node server/seed.mjs",
+    "catalog:sync": "npm --prefix server run catalog:sync",
     "db:schema": "npm --prefix db run schema",
     "db:reset": "npm --prefix db run reset",
     "db:check": "npm --prefix db run check",
     "db:demo": "npm --prefix db run demo",
-    "db:inspect": "npm --prefix db run inspect"
+    "db:inspect": "npm --prefix db run inspect",
+    "catalog:export": "node server/export-catalog.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "three": "^0.187.0"
   },
   "devDependencies": {
+    "@gltf-transform/cli": "^4.5.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",

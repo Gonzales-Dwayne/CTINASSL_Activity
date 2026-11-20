@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react'
 import { ArrowRightIcon, CartIcon, SearchIcon, UserIcon } from './Icons'
+import AccountDrawer from './AccountDrawer'
 import CartDrawer from './CartDrawer'
 import SearchDrawer from './SearchDrawer'
-import { CATEGORIES } from '../data/products'
+import { useProducts } from '../productsStore'
 import styles from './SiteHeader.module.css'
-
-const NAV_LINKS = [
-  { label: 'All Products', category: null },
-  { label: 'Keyboards', category: 'Mechanical Keyboards' },
-  { label: 'Keycaps', category: 'Keycaps' },
-  { label: 'Switches', category: 'Switches' },
-]
 
 function SiteHeader({
   onNavigate,
@@ -18,13 +12,32 @@ function SiteHeader({
   cart = [],
   onQty,
   onRemove,
+  onCheckout,
+  user = null,
+  onLogin,
+  onLogout,
+  onDashboard,
 }) {
   const cartCount = cart.reduce((count, line) => count + line.qty, 0)
+  const { products, categories } = useProducts()
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [menuCategory, setMenuCategory] = useState(CATEGORIES[0])
+  const [menuCategory, setMenuCategory] = useState(null)
   const [panel, setPanel] = useState(null)
+
+  const navLinks = [
+    { label: 'All Products', category: null },
+    ...categories.slice(0, 3).map((entry) => ({
+      label: entry.name,
+      category: entry.name,
+    })),
+  ]
+
+  const activeCategory = menuCategory ?? categories[0]?.name ?? ''
+  const menuProducts = products
+    .filter((product) => product.category === activeCategory)
+    .slice(0, 6)
 
   useEffect(() => {
     let lastY = window.scrollY
@@ -95,17 +108,17 @@ function SiteHeader({
         </a>
 
         <nav className={styles.navigationText} aria-label="Primary">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.label}
               className={styles.navLink}
               href="#top"
               onMouseEnter={() => {
-                setMenuCategory(link.category ?? CATEGORIES[0])
+                setMenuCategory(link.category ?? categories[0]?.name ?? null)
                 setMenuOpen(true)
               }}
               onFocus={() => {
-                setMenuCategory(link.category ?? CATEGORIES[0])
+                setMenuCategory(link.category ?? categories[0]?.name ?? null)
                 setMenuOpen(true)
               }}
               onClick={(e) => go(e, 'catalogue', link.category)}
@@ -135,7 +148,12 @@ function SiteHeader({
               <span className={styles.cartBadge}>{cartCount}</span>
             ) : null}
           </button>
-          <button className={styles.iconButton} type="button" aria-label="Account">
+          <button
+            className={styles.iconButton}
+            type="button"
+            aria-label={user ? `Account, ${user.name}` : 'Account'}
+            onClick={() => setPanel('account')}
+          >
             <UserIcon />
           </button>
         </div>
@@ -144,11 +162,13 @@ function SiteHeader({
       {menuOpen ? (
         <div className={styles.megaMenu}>
           <div className={styles.megaLeft}>
-            {CATEGORIES.map((category) => (
+            {categories.map((entry) => {
+              const category = entry.name
+              return (
               <a
                 key={category}
                 className={
-                  category === menuCategory
+                  category === activeCategory
                     ? `${styles.megaCategory} ${styles.megaCategoryActive}`
                     : styles.megaCategory
                 }
@@ -159,7 +179,8 @@ function SiteHeader({
               >
                 {category}
               </a>
-            ))}
+              )
+            })}
           </div>
 
           <div className={styles.megaDivider} aria-hidden="true" />
@@ -168,22 +189,32 @@ function SiteHeader({
             <div className={styles.megaHead}>
               <div>
                 <p className={styles.megaEyebrow}>Featured picks</p>
-                <p className={styles.megaTitle}>{menuCategory}</p>
+                <p className={styles.megaTitle}>{activeCategory}</p>
               </div>
               <a
                 className={styles.megaViewAll}
                 href="#top"
-                onClick={(e) => go(e, 'catalogue', menuCategory)}
+                onClick={(e) => go(e, 'catalogue', activeCategory)}
               >
                 View all
                 <ArrowRightIcon className={styles.megaViewAllIcon} />
               </a>
             </div>
 
-            {/* No products wired up yet — slots stay empty */}
-            <div className={styles.megaTiles} aria-hidden="true">
-              {Array.from({ length: 6 }, (_, slot) => (
-                <div className={styles.megaTile} key={slot} />
+            <div className={styles.megaTiles}>
+              {menuProducts.map((product) => (
+                <button
+                  key={product.id}
+                  className={styles.megaTile}
+                  type="button"
+                  style={{ backgroundColor: product.image }}
+                  onClick={() => {
+                    setMenuOpen(false)
+                    onNavigate?.('product', null, '', product.id)
+                  }}
+                >
+                  <span className={styles.megaTileName}>{product.name}</span>
+                </button>
               ))}
             </div>
 
@@ -210,6 +241,25 @@ function SiteHeader({
       ) : null}
       </header>
 
+      {panel === 'account' ? (
+        <AccountDrawer
+          user={user}
+          onClose={() => setPanel(null)}
+          onLogin={() => {
+            setPanel(null)
+            onLogin?.()
+          }}
+          onLogout={() => {
+            setPanel(null)
+            onLogout?.()
+          }}
+          onDashboard={() => {
+            setPanel(null)
+            onDashboard?.()
+          }}
+        />
+      ) : null}
+
       {panel === 'search' ? (
         <SearchDrawer
           onClose={() => setPanel(null)}
@@ -227,9 +277,15 @@ function SiteHeader({
       {panel === 'cart' ? (
         <CartDrawer
           items={cart}
+          user={user}
           onClose={() => setPanel(null)}
           onQty={onQty}
           onRemove={onRemove}
+          onCheckout={onCheckout}
+          onSignIn={() => {
+            setPanel(null)
+            onNavigate?.('login')
+          }}
           onBrowse={() => {
             setPanel(null)
             onNavigate?.('catalogue', null)

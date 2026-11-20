@@ -1,80 +1,26 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
+const HeroModel = lazy(() => import('./components/HeroModel'))
+const HeroShowcase = lazy(() => import('./components/HeroShowcase'))
 import { ArrowRightIcon } from './components/Icons'
-import { CATEGORIES, PRODUCTS } from './data/products'
+import { formatPrice, productsInCategory } from './data/products'
+import { useProducts } from './productsStore'
 import styles from './LandingPage.module.css'
-
-const FEATURED = [
-  {
-    id: 'nova-75',
-    label: 'Nova 75',
-    name: 'ClackLabs Nova 75',
-    description:
-      'A 75% aluminum board with a gasket mount, hot-swap sockets and a rotary knob.',
-    image: '#1d4ed8',
-  },
-  {
-    id: 'atlas-tkl',
-    label: 'Atlas TKL',
-    name: 'ClackLabs Atlas TKL',
-    description:
-      'Tenkeyless steel plate and PBT caps for a firm, consistent typing feel.',
-    image: '#2563eb',
-  },
-  {
-    id: 'flux-60',
-    label: 'Flux 60',
-    name: 'ClackLabs Flux 60 HE',
-    description:
-      'Hall-effect switches with per-key actuation from 0.1mm and rapid trigger.',
-    image: '#3b82f6',
-  },
-  {
-    id: 'pulse-87',
-    label: 'Pulse 87',
-    name: 'ClackLabs Pulse 87 HE',
-    description:
-      'A TKL magnetic board with a configurable actuation curve and 4kHz polling.',
-    image: '#60a5fa',
-  },
-  {
-    id: 'linear-45g',
-    label: 'Linear 45g',
-    name: 'ClackLabs Linear 45g',
-    description:
-      'Smooth linear switches, 45g bottom-out, factory pre-lubed and ready to drop in.',
-    image: '#1e40af',
-  },
-  {
-    id: 'tactile-55g',
-    label: 'Tactile 55g',
-    name: 'ClackLabs Tactile 55g',
-    description:
-      'A round tactile bump with a short 3.6mm travel for confident, quiet typing.',
-    image: '#1d4ed8',
-  },
-  {
-    id: 'pbt-cherry',
-    label: 'PBT Cherry',
-    name: 'ClackLabs PBT Cherry Beige',
-    description:
-      'Double-shot PBT in Cherry profile with warm beige alphas and deep legends.',
-    image: '#3b82f6',
-  },
-  {
-    id: 'pbt-ocean',
-    label: 'PBT Ocean',
-    name: 'ClackLabs PBT OEM Blue Ocean',
-    description:
-      'An OEM profile set in a deep blue and cream colorway, built to last.',
-    image: '#2563eb',
-  },
-]
 
 const HERO_DELAY_MS = 5000
 
-const SHOWCASE_CATEGORIES = CATEGORIES.slice(0, 4)
+// Pinned: the 3D hero is built but switched off for now. Flip to true (and
+// keep public/models/b1-pro-bottom-case.glb present) to bring it back.
+const HERO_MODEL_ENABLED = false
 
-// Five hero images — flat colors until the real exports land.
+// Cinematic dark stage per slide: base colour, light tint and glow.
+const HERO_PALETTE = [
+  { background: '#05070f', accent: '#3b82f6', glow: 'rgba(59, 130, 246, 0.32)' },
+  { background: '#0d0710', accent: '#f472b6', glow: 'rgba(244, 114, 182, 0.26)' },
+  { background: '#08090f', accent: '#93c5fd', glow: 'rgba(147, 197, 253, 0.24)' },
+  { background: '#06090f', accent: '#38bdf8', glow: 'rgba(56, 189, 248, 0.26)' },
+]
+
+// Hero palette (design colours, not product data).
 const HERO_SLIDES = [
   { id: 'nova', color: '#1d4ed8' },
   { id: 'flux', color: '#2563eb' },
@@ -83,27 +29,74 @@ const HERO_SLIDES = [
   { id: 'keycaps', color: '#3b82f6' },
 ]
 
-function productIdForLabel(label) {
-  const needle = label.toLowerCase()
-  const direct = PRODUCTS.find((product) =>
-    product.name.toLowerCase().includes(needle),
-  )
-  if (direct) return direct.id
-
-  const lastWord = needle.split(' ').pop()
-  return (
-    PRODUCTS.find((product) => product.name.toLowerCase().includes(lastWord))
-      ?.id ?? null
-  )
-}
-
 function LandingPage({ onNavigate }) {
+  const { products, categories } = useProducts()
   const [active, setActive] = useState(0)
   const [heroIndex, setHeroIndex] = useState(0)
-
   const viewportRef = useRef(null)
   const cardRefs = useRef([])
   const barRef = useRef(null)
+
+  // One pick per category, topped up from the catalogue if needed.
+  const featured = useMemo(() => {
+    if (products.length === 0) return []
+
+    const picks = []
+    const used = new Set()
+
+    for (const entry of categories) {
+      const match = products.find(
+        (product) => product.category === entry.name && !used.has(product.id),
+      )
+      if (match) {
+        picks.push(match)
+        used.add(match.id)
+      }
+      if (picks.length === 5) break
+    }
+
+    for (const product of products) {
+      if (picks.length === 5) break
+      if (!used.has(product.id)) {
+        picks.push(product)
+        used.add(product.id)
+      }
+    }
+
+    return picks.slice(0, 5)
+  }, [products, categories])
+
+  const showcaseCategories = categories.slice(0, 4)
+  const featuredCount = featured.length || HERO_SLIDES.length
+
+  // The hero shows the Lofree keyboards from the database (up to 4), falling
+  // back to the design palette when none are present.
+  const heroSlides = useMemo(() => {
+    const lofree = products.filter(
+      (product) =>
+        /lofree/i.test(product.name) && /keyboard/i.test(product.category),
+    )
+
+    if (lofree.length > 0) {
+      return lofree.slice(0, 4).map((product, index) => ({
+        id: product.id,
+        color: product.image,
+        name: product.name,
+        priceCents: product.priceCents,
+        eyebrow: 'Lofree collection',
+        ...HERO_PALETTE[index % HERO_PALETTE.length],
+      }))
+    }
+
+    return HERO_SLIDES.map((slide) => ({
+      id: slide.id,
+      color: slide.color,
+      name: null,
+    }))
+  }, [products])
+
+  const heroCount = heroSlides.length
+  const heroPosition = heroIndex % heroCount
 
   // Hero carousel — 5s per slide, always advancing while the page is open.
   // No hover pause: the hero fills the viewport, so a pointer resting on it
@@ -123,14 +116,14 @@ function LandingPage({ onNavigate }) {
     raf = requestAnimationFrame(tick)
 
     const timer = setTimeout(() => {
-      setHeroIndex((current) => (current + 1) % HERO_SLIDES.length)
+      setHeroIndex((current) => (current + 1) % heroCount)
     }, HERO_DELAY_MS)
 
     return () => {
       cancelAnimationFrame(raf)
       clearTimeout(timer)
     }
-  }, [heroIndex])
+  }, [heroIndex, heroCount])
 
   // Track which card is closest to the middle of the carousel.
   useEffect(() => {
@@ -186,7 +179,7 @@ function LandingPage({ onNavigate }) {
   }
 
   function step(direction) {
-    const next = Math.min(Math.max(active + direction, 0), FEATURED.length - 1)
+    const next = Math.min(Math.max(active + direction, 0), featured.length - 1)
     goTo(next)
   }
 
@@ -201,37 +194,84 @@ function LandingPage({ onNavigate }) {
         aria-roledescription="carousel"
         aria-label="Featured images"
       >
-        {HERO_SLIDES.map((slide, index) => (
+        {heroSlides.map((slide, index) => (
           <div
             key={slide.id}
             className={
-              index === heroIndex
+              index === heroPosition
                 ? `${styles.heroSlide} ${styles.heroSlideActive}`
                 : styles.heroSlide
             }
-            style={{ backgroundColor: slide.color }}
-            aria-hidden={index !== heroIndex}
-          />
+            style={{
+              backgroundColor: slide.background ?? slide.color,
+              '--hero-glow': slide.glow,
+              '--hero-accent': slide.accent,
+            }}
+            aria-hidden={index !== heroPosition}
+            inert={index !== heroPosition}
+          >
+            {slide.name ? (
+              <div className={styles.heroContent}>
+                <p className={styles.heroEyebrow}>{slide.eyebrow}</p>
+                <h1 className={styles.heroTitle}>{slide.name}</h1>
+                <p className={styles.heroPrice}>
+                  {formatPrice(slide.priceCents)}
+                </p>
+                <button
+                  className={styles.heroCta}
+                  type="button"
+                  onClick={() => onNavigate?.('product', null, '', slide.id)}
+                >
+                  Shop now
+                </button>
+              </div>
+            ) : null}
+          </div>
         ))}
 
+        <Suspense fallback={null}>
+          <HeroShowcase activeName={heroSlides[heroPosition]?.name ?? ''} />
+        </Suspense>
+
+        <div className={styles.heroVignette} aria-hidden="true" />
+
+        <div className={styles.heroGrain} aria-hidden="true" />
+
+        {HERO_MODEL_ENABLED ? (
+          <Suspense fallback={null}>
+            <HeroModel />
+          </Suspense>
+        ) : null}
+
+        {HERO_MODEL_ENABLED ? (
+          <a
+            className={styles.heroCredit}
+            href="https://github.com/Keychron/Keychron-Keyboards-Hardware-Design"
+            target="_blank"
+            rel="noreferrer"
+          >
+            3D model: Keychron B1 Pro — educational use
+          </a>
+        ) : null}
+
         <div className={styles.heroDots}>
-          {HERO_SLIDES.map((slide, index) => (
+          {heroSlides.map((slide, index) => (
             <button
               key={slide.id}
               className={
-                index === heroIndex
+                index === heroPosition
                   ? `${styles.heroDot} ${styles.heroDotActive}`
                   : styles.heroDot
               }
               type="button"
               onClick={() => setHeroIndex(index)}
-              aria-label={`Show image ${index + 1} of ${HERO_SLIDES.length}`}
-              aria-current={index === heroIndex ? 'true' : undefined}
+              aria-label={`Show image ${index + 1} of ${heroSlides.length}`}
+              aria-current={index === heroPosition ? 'true' : undefined}
             >
               <span className={styles.heroDotTrack}>
                 {index === heroIndex ? (
                   <span
-                    key={heroIndex}
+                    key={heroPosition}
                     ref={(node) => {
                       barRef.current = node
                     }}
@@ -260,12 +300,12 @@ function LandingPage({ onNavigate }) {
             tabIndex={0}
           >
             <div className={styles.carousel}>
-              {FEATURED.map((product, index) => (
+              {featured.map((product, index) => (
                 <article
                   className={[
                     styles.featuredCard,
                     index === 0 ? styles.featuredCardFirst : '',
-                    index === FEATURED.length - 1
+                    index === featured.length - 1
                       ? `${styles.featuredCardLast} ${styles.featuredCardReversed}`
                       : '',
                     index === active ? '' : styles.featuredCardMuted,
@@ -297,12 +337,7 @@ function LandingPage({ onNavigate }) {
                         className={styles.shopNowWrapper}
                         type="button"
                         onClick={() => {
-                          const id = productIdForLabel(product.label)
-                          if (id) {
-                            onNavigate?.('product', null, '', id)
-                          } else {
-                            openCatalogue('Mechanical Keyboards')
-                          }
+                          onNavigate?.('product', null, '', product.id)
                         }}
                       >
                         <span className={styles.productName}>Shop Now</span>
@@ -320,7 +355,7 @@ function LandingPage({ onNavigate }) {
 
           <div
             className={
-              active === FEATURED.length - 1
+              active === featured.length - 1
                 ? `${styles.carouselArrows} ${styles.carouselArrowsEnd}`
                 : styles.carouselArrows
             }
@@ -339,7 +374,7 @@ function LandingPage({ onNavigate }) {
               type="button"
               onClick={() => step(1)}
               aria-label="Next product"
-              disabled={active === FEATURED.length - 1}
+              disabled={active === featured.length - 1}
             >
               <ArrowRightIcon />
             </button>
@@ -351,14 +386,14 @@ function LandingPage({ onNavigate }) {
             <div
               className={styles.progressThumb}
               style={{
-                width: `${100 / FEATURED.length}%`,
-                left: `${(active * 100) / FEATURED.length}%`,
+                width: `${100 / featuredCount}%`,
+                left: `${(active * 100) / featuredCount}%`,
               }}
             />
           </div>
 
           <div className={styles.chips}>
-            {FEATURED.map((product, index) => (
+            {featured.map((product, index) => (
               <button
                 className={
                   index === active
@@ -371,7 +406,7 @@ function LandingPage({ onNavigate }) {
                 aria-pressed={index === active}
               >
                 <span className={styles.chipDot} />
-                {product.label}
+                {product.name}
               </button>
             ))}
           </div>
@@ -385,7 +420,7 @@ function LandingPage({ onNavigate }) {
           </div>
 
           <div className={styles.categoryGroupParent}>
-            {SHOWCASE_CATEGORIES.map((category, index) => (
+            {showcaseCategories.map((entry, index) => (
               <div
                 className={
                   [
@@ -395,23 +430,23 @@ function LandingPage({ onNavigate }) {
                     styles.categoryGroup4,
                   ][index]
                 }
-                key={category}
+                key={entry.name}
               >
                 <div className={styles.category}>
                   <div className={styles.frameParent2}>
                     <div className={styles.productNameWrapper}>
-                      <div className={styles.productName}>{category}</div>
+                      <div className={styles.productName}>{entry.name}</div>
                     </div>
                     <div className={styles.productDescriptionWrapper}>
                       <div className={styles.productDescription}>
-                        Category Description
+                        {productsInCategory(products, entry.name).length} products
                       </div>
                     </div>
                     <div className={styles.frameWrapper3}>
                       <button
                         className={styles.exploreParent}
                         type="button"
-                        onClick={() => openCatalogue(category)}
+                        onClick={() => openCatalogue(entry.name)}
                       >
                         <span className={styles.productName}>Explore</span>
                         <ArrowRightIcon className={styles.arrowRightIcon} />

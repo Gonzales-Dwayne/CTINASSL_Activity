@@ -6,11 +6,23 @@ import {
   getProduct,
   productsInCategory,
 } from './data/products'
+import { useProducts } from './productsStore'
 import styles from './ProductPage.module.css'
 
 function ProductPage({ productId, onNavigate, onAdd }) {
   const [quantity, setQuantity] = useState(1)
-  const product = getProduct(productId)
+  const { products, loading } = useProducts()
+  const product = getProduct(products, productId)
+
+  if (loading) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <p className={styles.meta}>Loading product…</p>
+        </main>
+      </div>
+    )
+  }
 
   if (!product) {
     return (
@@ -29,7 +41,7 @@ function ProductPage({ productId, onNavigate, onAdd }) {
     )
   }
 
-  const related = productsInCategory(product.category)
+  const related = productsInCategory(products, product.category)
     .filter((item) => item.id !== product.id)
     .slice(0, 4)
 

@@ -288,3 +288,61 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Account panel ---------------------------------------------------------- */
+
+.accountHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0 4px;
+}
+
+.accountAvatar {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--color-royalblue);
+  color: var(--color-white);
+  font-size: 18px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.accountInfo strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.accountInfo small {
+  font-size: 13px;
+  color: var(--color-gray);
+}
+
+.accountRole {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background-color: var(--color-whitesmoke);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-dimgray);
+}
+
+.error {
+  margin: 0;
+  color: #b42318;
+  font-size: 13px;
+}

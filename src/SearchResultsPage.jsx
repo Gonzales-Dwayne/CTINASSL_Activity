@@ -1,18 +1,21 @@
 import ProductCard from './components/ProductCard'
 import { searchProducts } from './data/products'
+import { useProducts } from './productsStore'
 import styles from './CataloguePage.module.css'
 
 function SearchResultsPage({ query, onNavigate }) {
-  const results = searchProducts(query)
+  const { products, loading } = useProducts()
+  const results = searchProducts(products, query)
 
   return (
     <div className={styles.page}>
-
       <main className={styles.main}>
         <header className={styles.head}>
-          <h1 className={styles.title}>Results for â€œ{query.trim()}â€</h1>
+          <h1 className={styles.title}>Results for “{query.trim()}”</h1>
           <p className={styles.count}>
-            {results.length} {results.length === 1 ? 'product' : 'products'}
+            {loading
+              ? 'Loading products…'
+              : `${results.length} ${results.length === 1 ? 'product' : 'products'}`}
           </p>
         </header>
 
@@ -28,7 +31,7 @@ function SearchResultsPage({ query, onNavigate }) {
           </div>
         ) : (
           <p className={styles.count}>
-            Nothing matched that search. Try â€œkeyboardâ€, â€œswitchâ€ or â€œkeycapsâ€.
+            Nothing matched that search. Try “keyboard”, “switch” or “keycaps”.
           </p>
         )}
       </main>

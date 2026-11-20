@@ -1,10 +1,6 @@
 import ProductCard from './components/ProductCard'
-import {
-  CATEGORIES,
-  PRODUCTS,
-  productsInCategory,
-  subcategoriesFor,
-} from './data/products'
+import { productsInCategory } from './data/products'
+import { useProducts } from './productsStore'
 import styles from './CataloguePage.module.css'
 
 function CataloguePage({
@@ -14,13 +10,14 @@ function CataloguePage({
   onSubcategory,
   onNavigate,
 }) {
-  const subcategories = subcategoriesFor(category)
-  const products = productsInCategory(category, subcategory)
+  const { products: allProducts, categories, loading } = useProducts()
+  const subcategories =
+    categories.find((entry) => entry.name === category)?.subcategories ?? []
+  const products = productsInCategory(allProducts, category, subcategory)
   const title = category ?? 'All Products'
 
   return (
     <div className={styles.page}>
-
       <main className={styles.main}>
         <nav className={styles.tabs} aria-label="Categories">
           <button
@@ -30,10 +27,11 @@ function CataloguePage({
             aria-pressed={!category}
           >
             All
-            <span className={styles.tabCount}>{PRODUCTS.length}</span>
+            <span className={styles.tabCount}>{allProducts.length}</span>
           </button>
 
-          {CATEGORIES.map((name) => {
+          {categories.map((entry) => {
+            const name = entry.name
             const isActive = category === name
             return (
               <button
@@ -45,7 +43,7 @@ function CataloguePage({
               >
                 {name}
                 <span className={styles.tabCount}>
-                  {productsInCategory(name).length}
+                  {productsInCategory(allProducts, name).length}
                 </span>
               </button>
             )
@@ -83,7 +81,7 @@ function CataloguePage({
                 >
                   {name}
                   <span className={styles.tabCount}>
-                    {productsInCategory(category, name).length}
+                    {productsInCategory(allProducts, category, name).length}
                   </span>
                 </button>
               )
@@ -94,8 +92,11 @@ function CataloguePage({
         <header className={styles.head}>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.count}>
-            {subcategory ? `${subcategory} Â· ` : ''}
-            {products.length} {products.length === 1 ? 'product' : 'products'}
+            {loading
+              ? 'Loading products…'
+              : `${subcategory ? `${subcategory} · ` : ''}${products.length} ${
+                  products.length === 1 ? 'product' : 'products'
+                }`}
           </p>
         </header>
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { SearchIcon } from './Icons'
-import { PRODUCTS, formatPrice, searchProducts } from '../data/products'
+import { formatPrice, searchProducts } from '../data/products'
+import { useProducts } from '../productsStore'
 import styles from './Drawers.module.css'
 
 const MAX_PREVIEW = 5
@@ -8,7 +9,8 @@ const MAX_PREVIEW = 5
 function SearchDrawer({ onClose, onViewAll, onSelectProduct }) {
   const [query, setQuery] = useState('')
   const inputRef = useRef(null)
-  const results = searchProducts(query)
+  const { products } = useProducts()
+  const results = searchProducts(products, query)
   const trimmed = query.trim()
 
   useEffect(() => {
@@ -61,7 +63,7 @@ function SearchDrawer({ onClose, onViewAll, onSelectProduct }) {
 
         {trimmed === '' ? (
           <p className={styles.hint}>
-            Start typing to search {PRODUCTS.length} products.
+            Start typing to search {products.length} products.
           </p>
         ) : results.length === 0 ? (
           <p className={styles.empty}>No products match “{trimmed}”.</p>
