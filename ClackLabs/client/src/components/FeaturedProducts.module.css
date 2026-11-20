@@ -1,0 +1,362 @@
+.featuredProducts {
+  --gutter: var(--page-gutter);
+  --card-width: min(974px, calc(100vw - (var(--gutter) * 2) - 48px));
+
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-padding-block) 0;
+  background: var(--color-background);
+  color: var(--color-black);
+  font-family: var(--font-be-vietnam-pro);
+}
+
+.headingWrap {
+  width: 100%;
+  margin: 0 0 40px;
+  padding: 0 var(--gutter);
+  box-sizing: border-box;
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-be-vietnam-pro);
+  font-size: clamp(30px, 2.4vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.carousel {
+  position: relative;
+}
+
+.viewport {
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 var(--gutter) 24px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+}
+
+.trackEnd {
+  flex: 0 0 var(--gutter);
+}
+
+.card {
+  display: flex;
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
+  min-height: 425px;
+  margin-right: clamp(24px, 3.8vw, 73px);
+  overflow: hidden;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 34px rgba(54, 44, 35, 0.03);
+  opacity: 0.24;
+  transition:
+    opacity 500ms ease,
+    box-shadow 500ms ease,
+    transform 500ms ease;
+}
+
+.card:last-of-type {
+  margin-right: 0;
+}
+
+.cardActive {
+  opacity: 1;
+  box-shadow: 0 18px 44px rgba(54, 44, 35, 0.07);
+}
+
+.media {
+  position: relative;
+  flex: 0 0 44.3%;
+  min-height: 425px;
+  overflow: hidden;
+}
+
+.media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 80px rgba(66, 49, 35, 0.08);
+}
+
+.productArt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 58px 64px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-be-vietnam-pro);
+  font-size: clamp(28px, 2vw, 36px);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.cardCopy {
+  max-width: 470px;
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #55514c;
+}
+
+.shopButton {
+  align-self: flex-start;
+  min-width: 126px;
+  margin-top: 32px;
+  padding: 12px 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  background: #111;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.shopButton:hover {
+  background: #2b2926;
+  transform: translateY(-1px);
+}
+
+.shopButton:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+.arrows {
+  position: absolute;
+  top: 50%;
+  right: clamp(16px, 10.4vw, 200px);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transform: translateY(-50%);
+}
+
+.arrowButton {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: #fff;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px rgba(55, 43, 32, 0.13);
+  cursor: pointer;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.arrowButton:hover:not(:disabled) {
+  box-shadow: 0 7px 22px rgba(55, 43, 32, 0.2);
+  transform: translateY(-1px);
+}
+
+.arrowButton:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.arrowButton:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.arrowIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0);
+}
+
+.progressArea {
+  width: min(1026px, calc(100% - (var(--gutter) * 2)));
+  margin: 8px auto 0;
+}
+
+.progressTrack {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
+  background: #dbd3ca;
+  border-radius: 2px;
+}
+
+.progressThumb {
+  height: 100%;
+  background: #f2732c;
+  border-radius: 2px;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  color: #302d29;
+  font-family: var(--font-be-vietnam-pro);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  background: #fff;
+  border: 1px solid #e7dfd6;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.chip:hover {
+  border-color: #c9beb2;
+}
+
+.chip:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.chipDot {
+  width: 6px;
+  height: 6px;
+  background: #b8afa5;
+  border-radius: 50%;
+  transition: background-color 180ms ease;
+}
+
+.chipActive {
+  color: #fff;
+  background: #111;
+  border-color: #111;
+}
+
+.chipActive .chipDot {
+  background: #f2732c;
+}
+
+@media (max-width: 1100px) {
+  .headingWrap {
+    margin-bottom: 32px;
+  }
+
+  .card {
+    min-height: 360px;
+  }
+
+  .media {
+    min-height: 360px;
+  }
+
+  .body {
+    padding: 40px;
+  }
+
+  .arrows {
+    right: 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .featuredProducts {
+    --card-width: calc(100vw - (var(--gutter) * 2));
+  }
+
+  .headingWrap {
+    margin-bottom: 28px;
+  }
+
+  .card {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .media {
+    flex: 0 0 210px;
+    min-height: 210px;
+  }
+
+  .body {
+    padding: 24px;
+  }
+
+  .cardCopy {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
+  .shopButton {
+    margin-top: 22px;
+  }
+
+  .arrows {
+    display: none;
+  }
+
+  .viewport {
+    padding-bottom: 16px;
+  }
+
+  .progressArea {
+    width: calc(100% - (var(--gutter) * 2));
+    margin-top: 4px;
+  }
+
+  .chips {
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .chip {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+}
