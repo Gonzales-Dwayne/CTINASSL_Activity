@@ -19,7 +19,7 @@ const FEATURED_PRODUCTS = [
   { name: 'Block 101', image: blockImage },
 ];
 
-const SiteHeader = () => {
+const SiteHeader = ({ onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -72,6 +72,7 @@ const SiteHeader = () => {
       className={[
         styles.header,
         scrolled ? styles.scrolled : '',
+        menuOpen ? styles.menuOpen : '',
         hidden ? styles.hidden : '',
       ]
         .filter(Boolean)
@@ -92,6 +93,7 @@ const SiteHeader = () => {
           type="button"
           onMouseEnter={() => setMenuOpen(true)}
           onFocus={() => setMenuOpen(true)}
+          onClick={() => onNavigate('products')}
           aria-expanded={menuOpen}
           aria-controls="product-menu"
         >
@@ -144,7 +146,13 @@ const SiteHeader = () => {
                 <span>Featured picks</span>
                 <h2>Keyboards</h2>
               </div>
-              <button className={styles.viewAll} type="button">View all <span>→</span></button>
+              <button
+                className={styles.viewAll}
+                type="button"
+                onClick={() => onNavigate('products')}
+              >
+                View all <span>→</span>
+              </button>
             </div>
             <div className={styles.productGrid}>
               {FEATURED_PRODUCTS.map((product) => (
