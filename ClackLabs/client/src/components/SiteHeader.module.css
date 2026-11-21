@@ -38,16 +38,17 @@
 }
 
 .clackLabs {
-  width: 144px;
   position: relative;
   display: inline-block;
-  flex-shrink: 0;
   color: var(--color-black);
+  font-size: var(--fs-32);
   white-space: nowrap;
 }
 
-.lack {
-  font-size: var(--fs-24);
+.clackLabs b {
+  font-size: var(--fs-32);
+  font-weight: 700;
+  letter-spacing: -0.04em;
 }
 
 .navigation {
@@ -105,16 +106,11 @@
   }
 
   .clackLabs {
-    width: auto;
     line-height: 32px;
   }
 
   .clackLabs b {
     font-size: 27px;
-  }
-
-  .lack {
-    font-size: 19px;
   }
 
   .navigation {

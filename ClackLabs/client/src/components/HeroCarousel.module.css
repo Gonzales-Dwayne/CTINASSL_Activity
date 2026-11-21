@@ -1,48 +1,72 @@
 .heroCarousel {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
   width: 100%;
   height: 100vh;
   height: 100svh;
   min-height: 620px;
-  position: relative;
   overflow: hidden;
   text-align: left;
   font-size: var(--fs-32);
   color: var(--color-black);
   background: var(--color-background);
   font-family: var(--font-be-vietnam-pro);
+  transition: background-color 650ms ease;
 }
 
-.frameParent {
+.images {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-  isolation: isolate;
-}
-
-.frameChild {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  margin: 0 !important;
-  inset: 0;
-  max-width: 100%;
-  overflow: hidden;
-  flex-shrink: 0;
-  object-fit: cover;
   z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.images::before {
+  content: '';
+  position: absolute;
+  width: min(94vw, 1540px);
+  height: min(78vh, 840px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.66) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+}
+
+.frameImage {
+  position: absolute;
+  width: min(64vw, 1180px);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  height: auto;
+  max-height: 72vh;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(14px) scale(0.985);
+  filter: drop-shadow(0 34px 45px rgba(60, 48, 36, 0.16));
+  transition:
+    opacity 550ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.frameImageActive {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .arrowParent {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   padding: 32px var(--page-gutter);
   gap: 12px;
-  z-index: 1;
 }
 
 .arrowButton {
@@ -101,6 +125,12 @@
     min-height: 560px;
   }
 
+  .frameImage {
+    width: 124vw;
+    max-width: none;
+    max-height: none;
+  }
+
   .arrowParent {
     padding: 20px var(--page-gutter);
     gap: 10px;
@@ -115,5 +145,11 @@
   .arrowIcon2 {
     width: 20px;
     height: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frameImage {
+    transition: none;
   }
 }

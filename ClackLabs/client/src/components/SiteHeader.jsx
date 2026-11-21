@@ -67,10 +67,7 @@ const SiteHeader = () => {
     >
       <div className={styles.logo}>
         <div className={styles.clackLabs}>
-          <b>C</b>
-          <span className={styles.lack}>{`lack `}</span>
-          <b>L</b>
-          <span className={styles.lack}>abs</span>
+          <b>CL</b>
         </div>
       </div>
 
