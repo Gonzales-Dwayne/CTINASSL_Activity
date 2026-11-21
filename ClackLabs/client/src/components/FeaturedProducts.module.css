@@ -7,7 +7,7 @@
   padding: var(--section-padding-block) 0;
   background: var(--color-background);
   color: var(--color-black);
-  font-family: var(--font-be-vietnam-pro);
+  font-family: var(--font-site);
 }
 
 .headingWrap {
@@ -19,7 +19,7 @@
 
 .heading {
   margin: 0;
-  font-family: var(--font-be-vietnam-pro);
+  font-family: var(--font-site);
   font-size: clamp(30px, 2.4vw, 40px);
   font-weight: 600;
   line-height: 1.15;

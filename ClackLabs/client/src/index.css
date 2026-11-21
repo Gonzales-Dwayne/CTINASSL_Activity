@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   /* Common Style Variables */
@@ -18,7 +18,7 @@
   --br-60: 60px;
 
   /* Font */
-  --font-be-vietnam-pro: Be Vietnam Pro, Arial, sans-serif;
+  --font-site: Inter, Arial, sans-serif;
 
   /* FontSize */
   --fs-20: 20px;
@@ -41,7 +41,7 @@ body {
   line-height: normal;
   color: var(--color-black);
   background: var(--color-background);
-  font-family: var(--font-be-vietnam-pro);
+  font-family: var(--font-site);
 }
 
 @media (max-width: 1100px) {

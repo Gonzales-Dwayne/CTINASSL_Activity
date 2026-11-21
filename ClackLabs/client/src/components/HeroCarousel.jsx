@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import arrowIcon from '../assets/icons/Arrow up.svg';
+import { useEffect, useState } from 'react';
 import blockImage from '../assets/images/carousel/block.webp';
 import flow84Image from '../assets/images/carousel/flow-84.webp';
 import flowLite84Image from '../assets/images/carousel/flow-lite-84.webp';
@@ -36,13 +35,13 @@ const SLIDES = [
 const HeroCarousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const showPrevious = () => {
-    setActiveSlide((current) => (current - 1 + SLIDES.length) % SLIDES.length);
-  };
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % SLIDES.length);
+    }, 5000);
 
-  const showNext = () => {
-    setActiveSlide((current) => (current + 1) % SLIDES.length);
-  };
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <div
@@ -65,29 +64,27 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      <div className={styles.arrowParent}>
-        <button
-          className={styles.arrowButton}
-          type="button"
-          onClick={showPrevious}
-          aria-label="Previous keyboard"
-        >
-          <img
-            className={styles.arrowIcon}
-            src={arrowIcon}
-            alt=""
-            style={{ transform: 'rotate(180deg)' }}
-          />
-        </button>
-        <button
-          className={styles.arrowButton}
-          type="button"
-          onClick={showNext}
-          aria-label="Next keyboard"
-        >
-          <img className={styles.arrowIcon2} src={arrowIcon} alt="" />
-        </button>
-      </div>
+      <nav className={styles.progressNav} aria-label="Choose featured keyboard">
+        {SLIDES.map((slide, index) => (
+          <button
+            key={slide.id}
+            className={styles.progressButton}
+            type="button"
+            onClick={() => setActiveSlide(index)}
+            aria-label={`Show ${slide.alt}`}
+            aria-current={index === activeSlide ? 'true' : undefined}
+          >
+            <span
+              className={`${styles.progressTrack} ${
+                index === activeSlide ? styles.progressActive : ''
+              } ${index < activeSlide ? styles.progressComplete : ''}`}
+            >
+              <span className={styles.progressFill} />
+            </span>
+          </button>
+        ))}
+      </nav>
+
     </div>
   );
 };
