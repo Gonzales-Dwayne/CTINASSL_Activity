@@ -8,9 +8,14 @@ import AllProducts from './pages/AllProducts'
 function App() {
   const [view, setView] = useState('home')
 
+  const navigate = (nextView) => {
+    setView(nextView)
+    window.scrollTo(0, 0)
+  }
+
   return (
     <>
-      <SiteHeader onNavigate={setView} />
+      <SiteHeader onNavigate={navigate} />
       {view === 'products' ? (
         <AllProducts />
       ) : (

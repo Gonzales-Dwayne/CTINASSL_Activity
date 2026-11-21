@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import searchIcon from '../assets/icons/Search.svg';
 import cartIcon from '../assets/icons/Shopping cart.svg';
 import userIcon from '../assets/icons/User.svg';
-import blockImage from '../assets/images/BlockP101.webp';
-import flow84Image from '../assets/images/Flow84.webp';
-import flowLite84Image from '../assets/images/Flow_Lite_2_84.webp';
-import tofu68Image from '../assets/images/Tofu68P.webp';
+import blockImage from '../assets/images/carousel/block.webp';
+import flow84Image from '../assets/images/carousel/flow-84.webp';
+import flowLite84Image from '../assets/images/carousel/flow-lite-84.webp';
+import tofu68Image from '../assets/images/carousel/tofu-68.webp';
 import styles from './SiteHeader.module.css';
 
 const TOP_OFFSET = 8;
@@ -24,6 +24,11 @@ const SiteHeader = ({ onNavigate }) => {
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const frame = useRef(0);
+
+  const navigate = (view) => {
+    setMenuOpen(false);
+    onNavigate(view);
+  };
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -67,6 +72,17 @@ const SiteHeader = ({ onNavigate }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [menuOpen]);
+
   return (
     <header
       className={[
@@ -77,15 +93,18 @@ const SiteHeader = ({ onNavigate }) => {
       ]
         .filter(Boolean)
         .join(' ')}
-      onMouseEnter={() => setMenuOpen(true)}
-      onMouseMove={() => setMenuOpen(true)}
       onMouseLeave={() => setMenuOpen(false)}
     >
-      <div className={styles.logo}>
-        <div className={styles.clackLabs}>
+      <button
+        className={styles.logo}
+        type="button"
+        onClick={() => navigate('home')}
+        aria-label="ClackLabs home"
+      >
+        <span className={styles.clackLabs}>
           <b>CL</b>
-        </div>
-      </div>
+        </span>
+      </button>
 
       <nav className={styles.navigation} aria-label="Primary">
         <button
@@ -93,7 +112,7 @@ const SiteHeader = ({ onNavigate }) => {
           type="button"
           onMouseEnter={() => setMenuOpen(true)}
           onFocus={() => setMenuOpen(true)}
-          onClick={() => onNavigate('products')}
+          onClick={() => navigate('products')}
           aria-expanded={menuOpen}
           aria-controls="product-menu"
         >
@@ -130,7 +149,6 @@ const SiteHeader = ({ onNavigate }) => {
         <div
           id="product-menu"
           className={styles.megaMenu}
-          onMouseLeave={() => setMenuOpen(false)}
         >
           <aside className={styles.categoryList} aria-label="Product categories">
             <button className={styles.categoryActive} type="button">Keyboards</button>
@@ -149,14 +167,19 @@ const SiteHeader = ({ onNavigate }) => {
               <button
                 className={styles.viewAll}
                 type="button"
-                onClick={() => onNavigate('products')}
+                onClick={() => navigate('products')}
               >
                 View all <span>→</span>
               </button>
             </div>
             <div className={styles.productGrid}>
               {FEATURED_PRODUCTS.map((product) => (
-                <button className={styles.productTile} key={product.name} type="button">
+                <button
+                  className={styles.productTile}
+                  key={product.name}
+                  type="button"
+                  onClick={() => navigate('products')}
+                >
                   <span className={styles.productImageWrap}>
                     <img src={product.image} alt="" />
                   </span>

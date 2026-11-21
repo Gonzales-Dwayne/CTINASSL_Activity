@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
-import blockImage from '../assets/images/BlockP101.webp';
-import flow84Image from '../assets/images/Flow84.webp';
-import flowLite84Image from '../assets/images/Flow_Lite_2_84.webp';
-import tofu68Image from '../assets/images/Tofu68P.webp';
+import blockImage from '../assets/images/carousel/block.webp';
+import flow84Image from '../assets/images/carousel/flow-84.webp';
+import flowLite84Image from '../assets/images/carousel/flow-lite-84.webp';
+import tofu68Image from '../assets/images/carousel/tofu-68.webp';
 import styles from './AllProducts.module.css';
 
 const PRODUCTS = [
@@ -10,11 +10,9 @@ const PRODUCTS = [
   { name: 'Lofree Flow Lite 84', category: 'Keyboards', price: 119, image: flowLite84Image },
   { name: 'Lofree Tofu 68', category: 'Keyboards', price: 129, image: tofu68Image },
   { name: 'Lofree Block 101', category: 'Keyboards', price: 169, image: blockImage },
-  { name: 'Flow Low Profile Switches', category: 'Switches', price: 24, image: flowLite84Image },
-  { name: 'PBT Keycap Set', category: 'Keycaps', price: 39, image: tofu68Image },
 ];
 
-const CATEGORIES = ['All Products', 'Keyboards', 'Switches', 'Keycaps'];
+const CATEGORIES = ['All Products', 'Keyboards'];
 
 const AllProducts = () => {
   const [category, setCategory] = useState('All Products');
@@ -36,7 +34,7 @@ const AllProducts = () => {
         <p className={styles.eyebrow}>The ClackLabs catalogue</p>
         <h1 id="all-products-title">All Products</h1>
         <p className={styles.description}>
-          Thoughtfully designed keyboards, switches, and keycaps for a better daily setup.
+          Thoughtfully designed low-profile keyboards for a better daily setup.
         </p>
       </section>
 
