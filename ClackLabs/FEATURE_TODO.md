@@ -85,6 +85,7 @@ This document tracks what is still missing or needs hardening. It replaces the e
 - [x] Account API for profile, password, addresses, wishlist, order history, and cart.
 - [x] Checkout API with order creation and confirmation.
 - [x] Product/order/customer admin APIs.
+- [x] Backend organized into `models/`, `controllers/`, `routes/`, `middleware/`, and `utils/` modules.
 
 ---
 
