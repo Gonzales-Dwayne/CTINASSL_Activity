@@ -1,0 +1,1412 @@
+{
+  "collections": {
+    "clacklabs.carts": {
+      "ns": "clacklabs.carts",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "userId",
+          "items",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "userId": {
+            "bsonType": "objectId"
+          },
+          "items": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": [
+                "productId",
+                "qty"
+              ],
+              "properties": {
+                "productId": {
+                  "bsonType": "string"
+                },
+                "qty": {
+                  "bsonType": "int",
+                  "minimum": 1,
+                  "maximum": 99
+                }
+              }
+            }
+          },
+          "createdAt": {
+            "bsonType": "string"
+          },
+          "updatedAt": {
+            "bsonType": "string"
+          }
+        }
+      }
+    },
+    "clacklabs.categories": {
+      "ns": "clacklabs.categories",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "name",
+          "description",
+          "productCount",
+          "sortOrder",
+          "updatedAt"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "string"
+          },
+          "name": {
+            "bsonType": "string"
+          },
+          "description": {
+            "bsonType": "string"
+          },
+          "image": {
+            "bsonType": "string"
+          },
+          "productCount": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "sortOrder": {
+            "bsonType": "int"
+          },
+          "updatedAt": {
+            "bsonType": "string"
+          }
+        }
+      }
+    },
+    "clacklabs.notifications": {
+      "ns": "clacklabs.notifications",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "type",
+          "to",
+          "orderId",
+          "status",
+          "createdAt"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "type": {
+            "enum": [
+              "order_confirmation"
+            ]
+          },
+          "to": {
+            "bsonType": "string",
+            "pattern": "^.+@.+\\..+$"
+          },
+          "orderId": {
+            "bsonType": "objectId"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "sent",
+              "failed"
+            ]
+          },
+          "error": {
+            "bsonType": "string"
+          },
+          "sentAt": {
+            "bsonType": "date"
+          },
+          "createdAt": {
+            "bsonType": "date"
+          }
+        }
+      }
+    },
+    "clacklabs.order_details": {
+      "ns": "clacklabs.order_details",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "userId",
+          "items",
+          "orderNumber",
+          "placedAt",
+          "status",
+          "totalCents",
+          "customer"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "userId": {
+            "bsonType": "objectId"
+          },
+          "items": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": [
+                "productId",
+                "name",
+                "unitPriceCents",
+                "qty"
+              ],
+              "properties": {
+                "productId": {
+                  "bsonType": "objectId"
+                },
+                "name": {
+                  "bsonType": "string"
+                },
+                "unitPriceCents": {
+                  "bsonType": "int",
+                  "minimum": 0
+                },
+                "qty": {
+                  "bsonType": "int",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "orderNumber": {
+            "bsonType": "string"
+          },
+          "totalCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "subtotalCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "shippingCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "taxCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "paid",
+              "packed",
+              "shipped",
+              "delivered",
+              "cancelled"
+            ]
+          },
+          "paymentMethod": {
+            "enum": [
+              "cod",
+              "demo-card"
+            ]
+          },
+          "contactEmail": {
+            "bsonType": "string",
+            "pattern": "^.+@.+\\..+$"
+          },
+          "shippingMethod": {
+            "bsonType": "string"
+          },
+          "shippingAddress": {
+            "bsonType": "object",
+            "required": [
+              "name",
+              "line1",
+              "city",
+              "postalCode",
+              "country"
+            ],
+            "properties": {
+              "name": {
+                "bsonType": "string"
+              },
+              "line1": {
+                "bsonType": "string"
+              },
+              "line2": {
+                "bsonType": "string"
+              },
+              "city": {
+                "bsonType": "string"
+              },
+              "state": {
+                "bsonType": "string"
+              },
+              "postalCode": {
+                "bsonType": "string"
+              },
+              "country": {
+                "bsonType": "string"
+              },
+              "phone": {
+                "bsonType": "string"
+              }
+            }
+          },
+          "placedAt": {
+            "bsonType": "date"
+          },
+          "customer": {
+            "bsonType": "object",
+            "required": [
+              "name",
+              "email",
+              "role"
+            ],
+            "properties": {
+              "name": {
+                "bsonType": "string"
+              },
+              "email": {
+                "bsonType": "string",
+                "pattern": "^.+@.+\\..+$"
+              },
+              "role": {
+                "enum": [
+                  "customer",
+                  "admin"
+                ]
+              },
+              "passwordChangedAt": {
+                "bsonType": "date"
+              },
+              "updatedAt": {
+                "bsonType": [
+                  "date",
+                  "string"
+                ]
+              },
+              "addresses": {
+                "bsonType": "array",
+                "items": {
+                  "bsonType": "object",
+                  "required": [
+                    "id",
+                    "label",
+                    "name",
+                    "line1",
+                    "city",
+                    "postalCode",
+                    "country",
+                    "isDefault"
+                  ],
+                  "properties": {
+                    "id": {
+                      "bsonType": "string"
+                    },
+                    "label": {
+                      "bsonType": "string"
+                    },
+                    "name": {
+                      "bsonType": "string"
+                    },
+                    "line1": {
+                      "bsonType": "string"
+                    },
+                    "line2": {
+                      "bsonType": "string"
+                    },
+                    "city": {
+                      "bsonType": "string"
+                    },
+                    "state": {
+                      "bsonType": "string"
+                    },
+                    "postalCode": {
+                      "bsonType": "string"
+                    },
+                    "country": {
+                      "bsonType": "string"
+                    },
+                    "phone": {
+                      "bsonType": "string"
+                    },
+                    "isDefault": {
+                      "bsonType": "bool"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "clacklabs.orders": {
+      "ns": "clacklabs.orders",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "orderNumber",
+          "userId",
+          "items",
+          "totalCents",
+          "status",
+          "placedAt"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "userId": {
+            "bsonType": "objectId"
+          },
+          "items": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": [
+                "productId",
+                "name",
+                "unitPriceCents",
+                "qty"
+              ],
+              "properties": {
+                "productId": {
+                  "bsonType": "objectId"
+                },
+                "name": {
+                  "bsonType": "string"
+                },
+                "unitPriceCents": {
+                  "bsonType": "int",
+                  "minimum": 0
+                },
+                "qty": {
+                  "bsonType": "int",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "orderNumber": {
+            "bsonType": "string"
+          },
+          "totalCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "subtotalCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "shippingCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "taxCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "paid",
+              "packed",
+              "shipped",
+              "delivered",
+              "cancelled"
+            ]
+          },
+          "paymentMethod": {
+            "enum": [
+              "cod",
+              "demo-card"
+            ]
+          },
+          "contactEmail": {
+            "bsonType": "string",
+            "pattern": "^.+@.+\\..+$"
+          },
+          "shippingMethod": {
+            "bsonType": "string"
+          },
+          "shippingAddress": {
+            "bsonType": "object",
+            "required": [
+              "name",
+              "line1",
+              "city",
+              "postalCode",
+              "country"
+            ],
+            "properties": {
+              "name": {
+                "bsonType": "string"
+              },
+              "line1": {
+                "bsonType": "string"
+              },
+              "line2": {
+                "bsonType": "string"
+              },
+              "city": {
+                "bsonType": "string"
+              },
+              "state": {
+                "bsonType": "string"
+              },
+              "postalCode": {
+                "bsonType": "string"
+              },
+              "country": {
+                "bsonType": "string"
+              },
+              "phone": {
+                "bsonType": "string"
+              }
+            }
+          },
+          "placedAt": {
+            "bsonType": "date"
+          }
+        }
+      }
+    },
+    "clacklabs.products": {
+      "ns": "clacklabs.products",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "id",
+          "slug",
+          "name",
+          "category",
+          "price",
+          "priceCents",
+          "currency",
+          "stock",
+          "description",
+          "details",
+          "specs",
+          "sourceUrl",
+          "detailsUpdatedAt",
+          "image",
+          "imageFile",
+          "featured",
+          "sortOrder",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "string"
+          },
+          "id": {
+            "bsonType": "string"
+          },
+          "slug": {
+            "bsonType": "string"
+          },
+          "name": {
+            "bsonType": "string"
+          },
+          "category": {
+            "bsonType": "string"
+          },
+          "subcategory": {
+            "bsonType": [
+              "string",
+              "null"
+            ]
+          },
+          "price": {
+            "bsonType": "int"
+          },
+          "priceCents": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "currency": {
+            "bsonType": "string"
+          },
+          "stock": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "sku": {
+            "bsonType": "string"
+          },
+          "barcode": {
+            "bsonType": "string"
+          },
+          "description": {
+            "bsonType": "string"
+          },
+          "details": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "string"
+            }
+          },
+          "specs": {
+            "bsonType": "object",
+            "additionalProperties": {
+              "bsonType": "string"
+            },
+            "properties": {
+              "Actuation": {
+                "bsonType": "string"
+              },
+              "Battery": {
+                "bsonType": "string"
+              },
+              "Compatibility": {
+                "bsonType": "string"
+              },
+              "Connectivity": {
+                "bsonType": "string"
+              },
+              "Dimensions": {
+                "bsonType": "string"
+              },
+              "Display": {
+                "bsonType": "string"
+              },
+              "Durability": {
+                "bsonType": "string"
+              },
+              "Ergonomics": {
+                "bsonType": "string"
+              },
+              "Keycaps": {
+                "bsonType": "string"
+              },
+              "Layout": {
+                "bsonType": "string"
+              },
+              "Legend": {
+                "bsonType": "string"
+              },
+              "Lighting": {
+                "bsonType": "string"
+              },
+              "Material": {
+                "bsonType": "string"
+              },
+              "Mount": {
+                "bsonType": "string"
+              },
+              "PollingRate": {
+                "bsonType": "string"
+              },
+              "PreTravel": {
+                "bsonType": "string"
+              },
+              "Profile": {
+                "bsonType": "string"
+              },
+              "Switches": {
+                "bsonType": "string"
+              },
+              "Thickness": {
+                "bsonType": "string"
+              },
+              "TotalTravel": {
+                "bsonType": "string"
+              },
+              "Travel": {
+                "bsonType": "string"
+              },
+              "Type": {
+                "bsonType": "string"
+              },
+              "TypingAngle": {
+                "bsonType": "string"
+              },
+              "Weight": {
+                "bsonType": "string"
+              },
+              "Wireless": {
+                "bsonType": "string"
+              }
+            }
+          },
+          "sourceUrl": {
+            "bsonType": [
+              "string",
+              "null"
+            ]
+          },
+          "detailsUpdatedAt": {
+            "bsonType": "string"
+          },
+          "image": {
+            "bsonType": "string"
+          },
+          "imageFile": {
+            "bsonType": "string"
+          },
+          "featured": {
+            "bsonType": "bool"
+          },
+          "archived": {
+            "bsonType": "bool"
+          },
+          "lowStockThreshold": {
+            "bsonType": "int",
+            "minimum": 0
+          },
+          "restockNote": {
+            "bsonType": "string"
+          },
+          "sortOrder": {
+            "bsonType": "int"
+          },
+          "createdAt": {
+            "bsonType": "string"
+          },
+          "updatedAt": {
+            "bsonType": "string"
+          }
+        }
+      }
+    },
+    "clacklabs.user_cart": {
+      "ns": "clacklabs.user_cart",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "name",
+          "email",
+          "role",
+          "cart",
+          "wishlist",
+          "cartProducts"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "name": {
+            "bsonType": "string"
+          },
+          "email": {
+            "bsonType": "string",
+            "pattern": "^.+@.+\\..+$"
+          },
+          "role": {
+            "enum": [
+              "customer",
+              "admin"
+            ]
+          },
+          "cart": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": [
+                "productId",
+                "qty"
+              ],
+              "properties": {
+                "productId": {
+                  "bsonType": "objectId"
+                },
+                "qty": {
+                  "bsonType": "int",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "wishlist": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "objectId"
+            }
+          },
+          "addresses": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": [
+                "id",
+                "label",
+                "name",
+                "line1",
+                "city",
+                "postalCode",
+                "country",
+                "isDefault"
+              ],
+              "properties": {
+                "id": {
+                  "bsonType": "string"
+                },
+                "label": {
+                  "bsonType": "string"
+                },
+                "name": {
+                  "bsonType": "string"
+                },
+                "line1": {
+                  "bsonType": "string"
+                },
+                "line2": {
+                  "bsonType": "string"
+                },
+                "city": {
+                  "bsonType": "string"
+                },
+                "state": {
+                  "bsonType": "string"
+                },
+                "postalCode": {
+                  "bsonType": "string"
+                },
+                "country": {
+                  "bsonType": "string"
+                },
+                "phone": {
+                  "bsonType": "string"
+                },
+                "isDefault": {
+                  "bsonType": "bool"
+                }
+              }
+            }
+          },
+          "passwordChangedAt": {
+            "bsonType": "date"
+          },
+          "createdAt": {
+            "bsonType": [
+              "date",
+              "string"
+            ]
+          },
+          "updatedAt": {
+            "bsonType": [
+              "date",
+              "string"
+            ]
+          },
+          "cartProducts": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "_id": {
+                  "bsonType": "string"
+                },
+                "id": {
+                  "bsonType": "string"
+                },
+                "slug": {
+                  "bsonType": "string"
+                },
+                "name": {
+                  "bsonType": "string"
+                },
+                "category": {
+                  "bsonType": "string"
+                },
+                "subcategory": {
+                  "bsonType": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "price": {
+                  "bsonType": "int"
+                },
+                "priceCents": {
+                  "bsonType": "int",
+                  "minimum": 0
+                },
+                "currency": {
+                  "bsonType": "string"
+                },
+                "stock": {
+                  "bsonType": "int",
+                  "minimum": 0
+                },
+                "sku": {
+                  "bsonType": "string"
+                },
+                "barcode": {
+                  "bsonType": "string"
+                },
+                "description": {
+                  "bsonType": "string"
+                },
+                "details": {
+                  "bsonType": "array",
+                  "items": {
+                    "bsonType": "string"
+                  }
+                },
+                "specs": {
+                  "bsonType": "object",
+                  "additionalProperties": {
+                    "bsonType": "string"
+                  },
+                  "properties": {
+                    "Actuation": {
+                      "bsonType": "string"
+                    },
+                    "Battery": {
+                      "bsonType": "string"
+                    },
+                    "Compatibility": {
+                      "bsonType": "string"
+                    },
+                    "Connectivity": {
+                      "bsonType": "string"
+                    },
+                    "Dimensions": {
+                      "bsonType": "string"
+                    },
+                    "Display": {
+                      "bsonType": "string"
+                    },
+                    "Durability": {
+                      "bsonType": "string"
+                    },
+                    "Ergonomics": {
+                      "bsonType": "string"
+                    },
+                    "Keycaps": {
+                      "bsonType": "string"
+                    },
+                    "Layout": {
+                      "bsonType": "string"
+                    },
+                    "Legend": {
+                      "bsonType": "string"
+                    },
+                    "Lighting": {
+                      "bsonType": "string"
+                    },
+                    "Material": {
+                      "bsonType": "string"
+                    },
+                    "Mount": {
+                      "bsonType": "string"
+                    },
+                    "PollingRate": {
+                      "bsonType": "string"
+                    },
+                    "PreTravel": {
+                      "bsonType": "string"
+                    },
+                    "Profile": {
+                      "bsonType": "string"
+                    },
+                    "Switches": {
+                      "bsonType": "string"
+                    },
+                    "Thickness": {
+                      "bsonType": "string"
+                    },
+                    "TotalTravel": {
+                      "bsonType": "string"
+                    },
+                    "Travel": {
+                      "bsonType": "string"
+                    },
+                    "Type": {
+                      "bsonType": "string"
+                    },
+                    "TypingAngle": {
+                      "bsonType": "string"
+                    },
+                    "Weight": {
+                      "bsonType": "string"
+                    },
+                    "Wireless": {
+                      "bsonType": "string"
+                    }
+                  }
+                },
+                "sourceUrl": {
+                  "bsonType": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "detailsUpdatedAt": {
+                  "bsonType": "string"
+                },
+                "image": {
+                  "bsonType": "string"
+                },
+                "imageFile": {
+                  "bsonType": "string"
+                },
+                "featured": {
+                  "bsonType": "bool"
+                },
+                "archived": {
+                  "bsonType": "bool"
+                },
+                "lowStockThreshold": {
+                  "bsonType": "int",
+                  "minimum": 0
+                },
+                "restockNote": {
+                  "bsonType": "string"
+                },
+                "sortOrder": {
+                  "bsonType": "int"
+                },
+                "createdAt": {
+                  "bsonType": "string"
+                },
+                "updatedAt": {
+                  "bsonType": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "clacklabs.users": {
+      "ns": "clacklabs.users",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "name",
+          "email",
+          "passwordHash",
+          "role",
+          "cart",
+          "wishlist"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "name": {
+            "bsonType": "string"
+          },
+          "email": {
+            "bsonType": "string",
+            "pattern": "^.+@.+\\..+$"
+          },
+          "passwordHash": {
+            "bsonType": "string"
+          },
+          "role": {
+            "enum": [
+              "customer",
+              "admin"
+            ]
+          },
+          "cart": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": [
+                "productId",
+                "qty"
+              ],
+              "properties": {
+                "productId": {
+                  "bsonType": "objectId"
+                },
+                "qty": {
+                  "bsonType": "int",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "wishlist": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "objectId"
+            }
+          },
+          "addresses": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "required": [
+                "id",
+                "label",
+                "name",
+                "line1",
+                "city",
+                "postalCode",
+                "country",
+                "isDefault"
+              ],
+              "properties": {
+                "id": {
+                  "bsonType": "string"
+                },
+                "label": {
+                  "bsonType": "string"
+                },
+                "name": {
+                  "bsonType": "string"
+                },
+                "line1": {
+                  "bsonType": "string"
+                },
+                "line2": {
+                  "bsonType": "string"
+                },
+                "city": {
+                  "bsonType": "string"
+                },
+                "state": {
+                  "bsonType": "string"
+                },
+                "postalCode": {
+                  "bsonType": "string"
+                },
+                "country": {
+                  "bsonType": "string"
+                },
+                "phone": {
+                  "bsonType": "string"
+                },
+                "isDefault": {
+                  "bsonType": "bool"
+                }
+              }
+            }
+          },
+          "passwordChangedAt": {
+            "bsonType": "date"
+          },
+          "createdAt": {
+            "bsonType": [
+              "date",
+              "string"
+            ]
+          },
+          "updatedAt": {
+            "bsonType": [
+              "date",
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "clacklabs.wishlists": {
+      "ns": "clacklabs.wishlists",
+      "jsonSchema": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "userId",
+          "productIds",
+          "createdAt",
+          "updatedAt"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "userId": {
+            "bsonType": "objectId"
+          },
+          "productIds": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "string"
+            }
+          },
+          "createdAt": {
+            "bsonType": "string"
+          },
+          "updatedAt": {
+            "bsonType": "string"
+          }
+        }
+      }
+    }
+  },
+  "relationships": [
+    {
+      "id": "fe822c12-6fde-4db7-8ac1-a275e3412fa5",
+      "relationship": [
+        {
+          "ns": "clacklabs.order_details",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.orders",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "9b05fc3f-3753-4a3b-a154-90a2abf8aa3b",
+      "relationship": [
+        {
+          "ns": "clacklabs.carts",
+          "fields": [
+            "items",
+            "productId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.products",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "c3978c13-4f75-4989-80c6-981b2a6a72e6",
+      "relationship": [
+        {
+          "ns": "clacklabs.carts",
+          "fields": [
+            "userId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.users",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "e22ad623-d160-4f6f-893d-9901c7aea0c1",
+      "relationship": [
+        {
+          "ns": "clacklabs.order_details",
+          "fields": [
+            "userId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.users",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "73937f06-50ac-4661-84ea-c0b7d155ddff",
+      "relationship": [
+        {
+          "ns": "clacklabs.orders",
+          "fields": [
+            "userId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.users",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "b56142e0-2c51-401e-9d1b-6e47253a0b9a",
+      "relationship": [
+        {
+          "ns": "clacklabs.orders",
+          "fields": [
+            "items",
+            "productId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.products",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "b902faba-b5a4-46f1-8435-2ed5bc6875c8",
+      "relationship": [
+        {
+          "ns": "clacklabs.order_details",
+          "fields": [
+            "items",
+            "productId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.products",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "243ee435-551a-468c-90e5-f386edc044b3",
+      "relationship": [
+        {
+          "ns": "clacklabs.wishlists",
+          "fields": [
+            "userId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.users",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "74908839-e5e0-466c-badd-2a10e7825d6d",
+      "relationship": [
+        {
+          "ns": "clacklabs.wishlists",
+          "fields": [
+            "productIds"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.products",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "d1ecc9aa-8b1b-4b78-86da-78d00b77e95b",
+      "relationship": [
+        {
+          "ns": "clacklabs.notifications",
+          "fields": [
+            "orderId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.orders",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "b4f0df6b-25c2-4f81-a40b-f8e10b29b6e2",
+      "relationship": [
+        {
+          "ns": "clacklabs.user_cart",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.users",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "26d257b2-1d92-49d6-b4ea-bdda317e3e95",
+      "relationship": [
+        {
+          "ns": "clacklabs.user_cart",
+          "fields": [
+            "cart",
+            "productId"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.products",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    },
+    {
+      "id": "4e721f0d-ef3b-4421-aece-bc54db64dafc",
+      "relationship": [
+        {
+          "ns": "clacklabs.user_cart",
+          "fields": [
+            "cartProducts",
+            "_id"
+          ],
+          "cardinality": 1
+        },
+        {
+          "ns": "clacklabs.products",
+          "fields": [
+            "_id"
+          ],
+          "cardinality": 1
+        }
+      ],
+      "isInferred": true
+    }
+  ]
+}

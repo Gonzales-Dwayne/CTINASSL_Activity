@@ -2,33 +2,82 @@ import { useEffect, useRef, useState } from 'react';
 import searchIcon from '../assets/icons/Search.svg';
 import cartIcon from '../assets/icons/Shopping cart.svg';
 import userIcon from '../assets/icons/User.svg';
-import blockImage from '../assets/images/carousel/block.webp';
-import flow84Image from '../assets/images/carousel/flow-84.webp';
-import flowLite84Image from '../assets/images/carousel/flow-lite-84.webp';
-import tofu68Image from '../assets/images/carousel/tofu-68.webp';
+import { useCart } from '../context/CartContext';
+import { useProducts } from '../context/ProductsContext';
+import { useProfile } from '../context/ProfileContext';
 import styles from './SiteHeader.module.css';
 
 const TOP_OFFSET = 8;
 const HIDE_OFFSET = 80;
 const DIRECTION_THRESHOLD = 6;
 
-const FEATURED_PRODUCTS = [
-  { name: 'Flow 84', image: flow84Image },
-  { name: 'Flow Lite 84', image: flowLite84Image },
-  { name: 'Tofu 68', image: tofu68Image },
-  { name: 'Block 101', image: blockImage },
+const NAV_CATEGORIES = [
+  { label: 'Keyboards', slug: 'keyboards' },
+  { label: 'Switches', slug: 'switches' },
+  { label: 'Keycaps', slug: 'keycaps' },
 ];
 
-const SiteHeader = ({ onNavigate }) => {
+const categoryPath = (category) => {
+  const match = NAV_CATEGORIES.find((item) => item.label === category);
+  return match ? `#/products/${match.slug}` : '#/products';
+};
+
+const SiteHeader = ({
+  onNavigate,
+  onOpenSearch,
+  onOpenCart,
+  cartCount = 0,
+}) => {
+  const { products } = useProducts();
+  const { profile, signOut } = useProfile();
+  const { clearCart } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuCategory, setMenuCategory] = useState('Keyboards');
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [navIndicator, setNavIndicator] = useState(null);
   const frame = useRef(0);
+  const accountRef = useRef(null);
+  const navRef = useRef(null);
 
-  const navigate = (view) => {
-    setMenuOpen(false);
-    onNavigate(view);
+  const moveNavIndicator = (index) => {
+    const button = navRef.current?.querySelectorAll('button')[index];
+    if (!button) return;
+    const navRect = navRef.current.getBoundingClientRect();
+    const buttonRect = button.getBoundingClientRect();
+    setNavIndicator({
+      left: buttonRect.left - navRect.left,
+      width: buttonRect.width,
+    });
   };
+
+  const navigate = (path) => {
+    setMenuOpen(false);
+    setAccountOpen(false);
+    setNavIndicator(null);
+    onNavigate(path);
+  };
+
+  useEffect(() => {
+    if (!accountOpen) return undefined;
+
+    const handlePointerDown = (event) => {
+      if (!accountRef.current?.contains(event.target)) {
+        setAccountOpen(false);
+      }
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setAccountOpen(false);
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [accountOpen]);
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -83,6 +132,10 @@ const SiteHeader = ({ onNavigate }) => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen]);
 
+  const featuredProducts = products
+    .filter((product) => product.category === menuCategory)
+    .slice(0, 4);
+
   return (
     <header
       className={[
@@ -93,97 +146,218 @@ const SiteHeader = ({ onNavigate }) => {
       ]
         .filter(Boolean)
         .join(' ')}
-      onMouseLeave={() => setMenuOpen(false)}
-    >
+      onMouseLeave={() => {
+        setMenuOpen(false);
+        setNavIndicator(null);
+      }}    >
       <button
         className={styles.logo}
         type="button"
-        onClick={() => navigate('home')}
+        onClick={() => navigate('#/')}
         aria-label="ClackLabs home"
       >
         <span className={styles.clackLabs}>
           <b>CL</b>
         </span>
+        <span className={styles.brandName}>ClackLabs</span>
       </button>
 
-      <nav className={styles.navigation} aria-label="Primary">
+      <nav className={styles.navigation} aria-label="Primary" ref={navRef}>
+        <span
+          className={styles.navIndicator}
+          aria-hidden="true"
+          style={{
+            left: navIndicator?.left || 0,
+            width: navIndicator?.width || 0,
+            opacity: menuOpen && navIndicator ? 1 : 0,
+          }}
+        />
         <button
-          className={`${styles.navButton} ${menuOpen ? styles.navButtonActive : ''}`}
+          className={styles.navButton}
           type="button"
-          onMouseEnter={() => setMenuOpen(true)}
-          onFocus={() => setMenuOpen(true)}
-          onClick={() => navigate('products')}
+          onMouseEnter={() => {
+            setMenuOpen(true);
+            moveNavIndicator(0);
+          }}
+          onFocus={() => {
+            setMenuOpen(true);
+            moveNavIndicator(0);
+          }}
+          onClick={() => navigate('#/products')}
           aria-expanded={menuOpen}
           aria-controls="product-menu"
         >
           All Products
         </button>
-        {['Keyboards', 'Switches', 'Keycaps'].map((item) => (
+        {NAV_CATEGORIES.map((item, index) => (
           <button
             className={styles.navButton}
-            key={item}
+            key={item.label}
             type="button"
-            onMouseEnter={() => setMenuOpen(true)}
-            onFocus={() => setMenuOpen(true)}
+            onMouseEnter={() => {
+              setMenuOpen(true);
+              setMenuCategory(item.label);
+              moveNavIndicator(index + 1);
+            }}
+            onFocus={() => {
+              setMenuOpen(true);
+              setMenuCategory(item.label);
+              moveNavIndicator(index + 1);
+            }}
+            onClick={() => {
+              setMenuCategory(item.label);
+              navigate(categoryPath(item.label));
+            }}
             aria-expanded={menuOpen}
             aria-controls="product-menu"
           >
-            {item}
+            {item.label}
           </button>
         ))}
       </nav>
 
       <div className={styles.functions}>
-        <div className={styles.allProducts}>
+        <button
+          className={styles.iconButton}
+          type="button"
+          onClick={() => {
+            setMenuOpen(false);
+            setAccountOpen(false);
+            onOpenSearch?.();
+          }}
+          aria-label="Search"
+        >
           <img className={styles.searchIcon} src={searchIcon} alt="" />
+        </button>
+        <div className={styles.accountWrap} ref={accountRef}>
+          <button
+            className={styles.iconButton}
+            type="button"
+            onClick={() => {
+              setMenuOpen(false);
+              if (profile) {
+                setAccountOpen((current) => !current);
+              } else {
+                navigate('#/login');
+              }
+            }}
+            aria-label={profile ? `Account for ${profile.name}` : 'Account'}
+            aria-haspopup={profile ? 'menu' : undefined}
+            aria-expanded={profile ? accountOpen : undefined}
+          >
+            {profile ? (
+              <span className={styles.profileInitial} aria-hidden="true">
+                {profile.name.slice(0, 1).toUpperCase()}
+              </span>
+            ) : (
+              <img className={styles.searchIcon} src={userIcon} alt="" />
+            )}
+          </button>
+
+          {profile && accountOpen ? (
+            <div className={styles.accountMenu} role="menu">
+              <div className={styles.accountMeta}>
+                <strong>{profile.name}</strong>
+                <span>{profile.email}</span>
+              </div>
+              {profile.role === 'admin' ? (
+                <button
+                  className={styles.accountAction}
+                  type="button"
+                  role="menuitem"
+                  onClick={() => navigate('#/admin')}
+                >
+                  Admin dashboard
+                </button>
+              ) : null}
+              <button
+                className={styles.accountAction}
+                type="button"
+                role="menuitem"
+                onClick={() => navigate('#/account')}
+              >
+                Account
+              </button>
+              <button
+                className={styles.accountAction}
+                type="button"
+                role="menuitem"
+                onClick={() => {
+                  setAccountOpen(false);
+                  clearCart();
+                  signOut();
+                  onNavigate('#/');
+                }}
+              >
+                Sign out
+              </button>
+            </div>
+          ) : null}
         </div>
-        <div className={styles.allProducts}>
-          <img className={styles.searchIcon} src={userIcon} alt="" />
-        </div>
-        <div className={styles.allProducts}>
+        <button
+          className={styles.iconButton}
+          type="button"
+          onClick={() => {
+            setMenuOpen(false);
+            setAccountOpen(false);
+            onOpenCart?.();
+          }}
+          aria-label={`Cart, ${cartCount} ${cartCount === 1 ? 'item' : 'items'}`}
+        >
           <img className={styles.searchIcon} src={cartIcon} alt="" />
-        </div>
+          {cartCount > 0 ? (
+            <span className={styles.cartBadge}>
+              {cartCount > 99 ? '99+' : cartCount}
+            </span>
+          ) : null}
+        </button>
       </div>
 
       {menuOpen && (
-        <div
-          id="product-menu"
-          className={styles.megaMenu}
-        >
+        <div id="product-menu" className={styles.megaMenu}>
           <aside className={styles.categoryList} aria-label="Product categories">
-            <button className={styles.categoryActive} type="button">Keyboards</button>
-            <button type="button">Switches</button>
-            <button type="button">Keycaps</button>
-            <button type="button">Accessories</button>
-            <button type="button">Gift Cards</button>
+            {NAV_CATEGORIES.map((item) => (
+              <button
+                className={
+                  menuCategory === item.label ? styles.categoryActive : undefined
+                }
+                key={item.label}
+                type="button"
+                onMouseEnter={() => setMenuCategory(item.label)}
+                onFocus={() => setMenuCategory(item.label)}
+                onClick={() => navigate(categoryPath(item.label))}
+              >
+                {item.label}
+              </button>
+            ))}
           </aside>
 
           <section className={styles.featuredPanel} aria-label="Featured products">
             <div className={styles.featuredHeader}>
               <div>
                 <span>Featured picks</span>
-                <h2>Keyboards</h2>
+                <h2>{menuCategory}</h2>
               </div>
               <button
                 className={styles.viewAll}
                 type="button"
-                onClick={() => navigate('products')}
+                onClick={() => navigate(categoryPath(menuCategory))}
               >
-                View all <span>→</span>
+                View all <span>â†’</span>
               </button>
             </div>
             <div className={styles.productGrid}>
-              {FEATURED_PRODUCTS.map((product) => (
+              {featuredProducts.map((product) => (
                 <button
                   className={styles.productTile}
-                  key={product.name}
+                  key={product.id}
                   type="button"
-                  onClick={() => navigate('products')}
+                  onClick={() => navigate(`#/product/${product.id}`)}
                 >
                   <span className={styles.productImageWrap}>
                     <img src={product.image} alt="" />
                   </span>
-                  <strong>{product.name}</strong>
+                  <strong>{product.name.replace('Lofree ', '')}</strong>
                 </button>
               ))}
             </div>

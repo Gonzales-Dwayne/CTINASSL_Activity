@@ -8,7 +8,7 @@
   --color-background: #fcf9f6;
 
   /* Layout */
-  --page-gutter: 60px;
+  --page-gutter: 240px;
   --section-padding-block: 72px;
 
   /* Gap */
@@ -44,23 +44,41 @@ body {
   font-family: var(--font-site);
 }
 
+@media (max-width: 1600px) {
+  :root {
+    --page-gutter: 160px;
+  }
+}
+
+@media (max-width: 1300px) {
+  :root {
+    --page-gutter: 100px;
+  }
+}
+
 @media (max-width: 1100px) {
   :root {
-    --page-gutter: 32px;
+    --page-gutter: 64px;
     --section-padding-block: 64px;
+  }
+}
+
+@media (max-width: 1000px) {
+  :root {
+    --page-gutter: 48px;
   }
 }
 
 @media (max-width: 820px) {
   :root {
-    --page-gutter: 20px;
+    --page-gutter: 32px;
     --section-padding-block: 56px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --page-gutter: 16px;
+    --page-gutter: 24px;
     --section-padding-block: 48px;
   }
 }

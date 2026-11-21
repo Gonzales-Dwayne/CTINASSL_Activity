@@ -1,130 +1,53 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useRef, useState } from 'react';
 import arrowIcon from '../assets/icons/Arrow up.svg';
+import { useProducts } from '../context/ProductsContext';
 import styles from './FeaturedProducts.module.css';
 
-const PRODUCTS = [
+const FEATURED_META = [
   {
-    id: 'flow-84',
-    name: 'Lofree Flow 84',
+    id: 'lofree-flow-84-white',
     chip: 'Flow 84',
     description:
       'A 75% low-profile keyboard with a gasket mount, hot-swappable switches, and a refined aluminum frame.',
-    colors: {
-      from: '#e3d9ca',
-      to: '#cfc5b5',
-      body: '#f2eee6',
-      plate: '#dfd8cc',
-      key: '#fbf9f4',
-      accent: '#d58a4a',
-    },
   },
   {
-    id: 'flow-lite-84',
-    name: 'Lofree Flow Lite 84',
-    chip: 'Flow Lite 84',
+    id: 'lofree-flow-lite-2-84-white',
+    chip: 'Flow Lite 2 84',
     description:
       'A lightweight 75% board with a soft gasket feel, PBT keycaps, and tri-mode wireless connectivity.',
-    colors: {
-      from: '#e8d7d2',
-      to: '#d8bfba',
-      body: '#f6e4e0',
-      plate: '#e4cec9',
-      key: '#fff8f4',
-      accent: '#c76b6b',
-    },
   },
   {
-    id: 'flow-100',
-    name: 'Lofree Flow 100',
-    chip: 'Flow 100',
+    id: 'lofree-tofu-68',
+    chip: 'Tofu 68',
     description:
-      'A full-size low-profile keyboard with a spacious layout, aluminum body, and smooth, quiet switches.',
-    colors: {
-      from: '#d9dde0',
-      to: '#c2c8cb',
-      body: '#eef1f2',
-      plate: '#d9dfe1',
-      key: '#fbfcfc',
-      accent: '#7e94a2',
-    },
+      'A compact 68-key keyboard with a warm retro silhouette and a smooth, tactile typing feel.',
   },
   {
-    id: 'flow-lite-100',
-    name: 'Lofree Flow Lite 100',
-    chip: 'Flow Lite 100',
-    description:
-      'A full-size wireless keyboard with a clean profile, comfortable typing feel, and long battery life.',
-    colors: {
-      from: '#dde2d7',
-      to: '#c8d0bf',
-      body: '#eff3e8',
-      plate: '#dbe1d2',
-      key: '#fbfcf7',
-      accent: '#8e9b79',
-    },
-  },
-  {
-    id: 'edge',
-    name: 'Lofree EDGE',
-    chip: 'Edge',
-    description:
-      'A compact wireless keyboard with a distinctive split layout and a premium, minimalist finish.',
-    colors: {
-      from: '#d2cec7',
-      to: '#b9b3aa',
-      body: '#34322f',
-      plate: '#262522',
-      key: '#4c4944',
-      accent: '#e39a55',
-    },
-  },
-  {
-    id: 'block',
-    name: 'Lofree Block',
-    chip: 'Block',
+    id: 'lofree-block-101',
+    chip: 'Block 101',
     description:
       'A bold, blocky mechanical keyboard with customizable controls and a solid aluminum chassis.',
-    colors: {
-      from: '#d7dde6',
-      to: '#bcc7d4',
-      body: '#35516c',
-      plate: '#29405a',
-      key: '#e6edf5',
-      accent: '#f0b05a',
-    },
+  },
+  {
+    id: 'lofree-edge-grey',
+    chip: 'Edge Grey',
+    description:
+      'A compact wireless keyboard with a distinctive split layout and a premium, minimalist finish.',
+  },
+  {
+    id: 'lofree-hyzen-silver',
+    chip: 'Hyzen Silver',
+    description:
+      'A clean, silver-finished keyboard built for focused work with a crisp, responsive feel.',
   },
 ];
 
-function ProductArt({ colors }) {
-  return (
-    <svg className={styles.productArt} viewBox="0 0 500 425" aria-hidden="true">
-      <ellipse cx="250" cy="330" rx="184" ry="23" fill="#241f1a" opacity=".16" />
-      <g transform="translate(26 118) rotate(-7 224 100)">
-        <rect x="5" y="52" width="438" height="176" rx="18" fill={colors.body} />
-        <rect x="20" y="66" width="408" height="148" rx="10" fill={colors.plate} />
-        {Array.from({ length: 5 }, (_, row) =>
-          Array.from({ length: 14 }, (_, column) => {
-            const accent =
-              (row === 0 && column === 0) || (row === 2 && column === 12);
-            return (
-              <rect
-                key={`${row}-${column}`}
-                x={30 + column * 28}
-                y={78 + row * 27}
-                width="23"
-                height="20"
-                rx="3"
-                fill={accent ? colors.accent : colors.key}
-              />
-            );
-          }),
-        )}
-      </g>
-    </svg>
-  );
-}
-
 const FeaturedProducts = () => {
+  const { products } = useProducts();
+  const featured = FEATURED_META.map((item) => {
+    const product = products.find((entry) => entry.id === item.id);
+    return product ? { ...item, ...product } : null;
+  }).filter(Boolean);
   const [active, setActive] = useState(0);
   const viewportRef = useRef(null);
   const cardRefs = useRef([]);
@@ -188,9 +111,11 @@ const FeaturedProducts = () => {
   };
 
   const step = (direction) => {
-    const next = Math.min(Math.max(active + direction, 0), PRODUCTS.length - 1);
+    const next = Math.min(Math.max(active + direction, 0), featured.length - 1);
     goTo(next);
   };
+
+  if (featured.length === 0) return null;
 
   return (
     <section
@@ -206,7 +131,7 @@ const FeaturedProducts = () => {
       <div className={styles.carousel}>
         <div className={styles.viewport} ref={viewportRef}>
           <div className={styles.track}>
-            {PRODUCTS.map((product, index) => (
+            {featured.map((product, index) => (
               <article
                 className={
                   index === active
@@ -217,24 +142,21 @@ const FeaturedProducts = () => {
                 ref={(node) => {
                   cardRefs.current[index] = node;
                 }}
-                inert={index !== active ? true : undefined}
                 aria-roledescription="slide"
-                aria-label={`${product.name}, ${index + 1} of ${PRODUCTS.length}`}
+                aria-label={`${product.name}, ${index + 1} of ${featured.length}`}
               >
-                <div
-                  className={styles.media}
-                  style={{
-                    background: `linear-gradient(140deg, ${product.colors.from}, ${product.colors.to})`,
-                  }}
-                >
-                  <ProductArt colors={product.colors} />
+                <div className={styles.media}>
+                  <img src={product.image} alt={product.name} loading="lazy" />
                 </div>
                 <div className={styles.body}>
                   <h3 className={styles.cardTitle}>{product.name}</h3>
                   <p className={styles.cardCopy}>{product.description}</p>
-                  <button className={styles.shopButton} type="button">
+                  <a
+                    className={styles.shopButton}
+                    href={`#/product/${product.id}`}
+                  >
                     Shop Now
-                  </button>
+                  </a>
                 </div>
               </article>
             ))}
@@ -261,7 +183,7 @@ const FeaturedProducts = () => {
             className={styles.arrowButton}
             type="button"
             onClick={() => step(1)}
-            disabled={active === PRODUCTS.length - 1}
+            disabled={active === featured.length - 1}
             aria-label="Next product"
           >
             <img className={styles.arrowIcon} src={arrowIcon} alt="" />
@@ -274,14 +196,14 @@ const FeaturedProducts = () => {
           <div
             className={styles.progressThumb}
             style={{
-              width: `${100 / PRODUCTS.length}%`,
+              width: `${100 / featured.length}%`,
               transform: `translateX(${active * 100}%)`,
             }}
           />
         </div>
 
         <div className={styles.chips}>
-          {PRODUCTS.map((product, index) => (
+          {featured.map((product, index) => (
             <button
               className={
                 index === active
