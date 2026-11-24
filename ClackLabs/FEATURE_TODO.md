@@ -163,8 +163,8 @@ Critical before checkout:
 - [ ] Add “notify me” / back-in-stock handling if desired.
 - [ ] Replace placeholder whole-dollar pricing with final prices (including cents if needed).
 - [ ] Complete sourced details for the two generic products:
-  - Lofree Moru
-  - Lofree Transparent
+  - clacklabs Moru
+  - clacklabs Transparent
 - [ ] Audit sourced descriptions/specs against current official product pages.
 
 ### 7. Search and catalogue discovery
@@ -310,7 +310,7 @@ Critical before checkout:
 - Admin product pricing is whole-dollar only.
 - JWT uses a development fallback secret unless `server/.env` sets one.
 - No shipping carrier, tax-provider, or refund integration.
-- Two products still use generic details: Lofree Moru and Lofree Transparent.
+- Two products still use generic details: clacklabs Moru and clacklabs Transparent.
 - No automated test suite or CI pipeline.
 - Legacy order/customer data may not align with the current catalogue.
 

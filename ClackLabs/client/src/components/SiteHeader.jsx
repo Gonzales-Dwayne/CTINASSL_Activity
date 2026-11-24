@@ -156,7 +156,7 @@ const SiteHeader = ({
         onClick={() => navigate('#/')}
         aria-label="ClackLabs home"
       >
-        <span className={styles.clackLabs}>
+        <span className={styles.ClackLabs}>
           <b>CL</b>
         </span>
         <span className={styles.brandName}>ClackLabs</span>
@@ -357,7 +357,7 @@ const SiteHeader = ({
                   <span className={styles.productImageWrap}>
                     <img src={product.image} alt="" />
                   </span>
-                  <strong>{product.name.replace('Lofree ', '')}</strong>
+                  <strong>{product.name.replace('ClackLabs ', '')}</strong>
                 </button>
               ))}
             </div>

@@ -13,12 +13,12 @@ for (const match of source.matchAll(importPattern)) {
 }
 
 const featuredIds = new Set([
-  'lofree-flow-84-white',
-  'lofree-flow-lite-2-84-white',
-  'lofree-tofu-68',
-  'lofree-block-101',
-  'lofree-edge-grey',
-  'lofree-hyzen-silver',
+  'clacklabs-flow-84-white',
+  'clacklabs-flow-lite-2-84-white',
+  'clacklabs-tofu-68',
+  'clacklabs-block-101',
+  'clacklabs-edge-grey',
+  'clacklabs-hyzen-silver',
 ]);
 
 const productPattern =

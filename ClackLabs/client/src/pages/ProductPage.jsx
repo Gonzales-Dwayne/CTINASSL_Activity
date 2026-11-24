@@ -23,7 +23,7 @@ const CATEGORY_SPECS = {
   Keycaps: [
     ['Profile', 'Low-profile'],
     ['Material', 'Durable PBT'],
-    ['Compatibility', 'Lofree Flow series'],
+    ['Compatibility', 'ClackLabs Flow series'],
   ],
   Switches: [
     ['Type', 'Linear'],
@@ -229,7 +229,7 @@ function ProductPage({ product, onNavigate, onProductSelect, onOpenCart }) {
               target="_blank"
               rel="noreferrer"
             >
-              Product information sourced from Lofree ↗
+              Product details by ClackLabs
             </a>
           ) : null}
 

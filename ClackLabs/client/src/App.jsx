@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import CartDrawer from './components/CartDrawer'
 import FeaturedProducts from './components/FeaturedProducts'
-import HeroCarousel from './components/HeroCarousel'
+import HighlightsHero from './components/HighlightsHero'
 import SearchDrawer from './components/SearchDrawer'
 import ShopCollections from './components/ShopCollections'
 import SiteHeader from './components/SiteHeader'
@@ -176,7 +176,7 @@ function App() {
   } else {
     content = (
       <>
-        <HeroCarousel />
+        <HighlightsHero />
         <FeaturedProducts />
         <ShopCollections onNavigate={goToCategory} />
       </>

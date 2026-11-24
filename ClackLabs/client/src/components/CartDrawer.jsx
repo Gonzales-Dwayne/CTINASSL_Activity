@@ -8,9 +8,16 @@ const CartDrawer = ({ open, onClose, onNavigate }) => {
     useCart();
   const { products } = useProducts();
   const [stockMessage, setStockMessage] = useState('');
+  const [mounted, setMounted] = useState(open);
 
   useEffect(() => {
-    if (!open) return undefined;
+    if (open) return undefined;
+    const timer = window.setTimeout(() => setMounted(false), 240);
+    return () => window.clearTimeout(timer);
+  }, [open]);
+
+  useEffect(() => {
+    if (!mounted) return undefined;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
@@ -23,9 +30,9 @@ const CartDrawer = ({ open, onClose, onNavigate }) => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [open, onClose]);
+  }, [mounted, onClose]);
 
-  if (!open) return null;
+  if (!open && !mounted) return null;
 
   const lines = items
     .map((item) => {
@@ -42,6 +49,7 @@ const CartDrawer = ({ open, onClose, onNavigate }) => {
   return (
     <div
       className={styles.backdrop}
+      data-open={open}
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
@@ -49,6 +57,8 @@ const CartDrawer = ({ open, onClose, onNavigate }) => {
     >
       <aside
         className={styles.panel}
+        data-open={open}
+        data-cart-state={lines.length ? 'filled' : 'empty'}
         role="dialog"
         aria-modal="true"
         aria-label="Shopping cart"
@@ -56,7 +66,7 @@ const CartDrawer = ({ open, onClose, onNavigate }) => {
         <div className={styles.header}>
           <div>
             <p className={styles.eyebrow}>Your selection</p>
-            <h2>Cart <span>{count}</span></h2>
+            <h2>Cart <span className={styles.count} data-has-items={count > 0}>{count}</span></h2>
           </div>
           <button className={styles.close} type="button" onClick={onClose}>
             Close

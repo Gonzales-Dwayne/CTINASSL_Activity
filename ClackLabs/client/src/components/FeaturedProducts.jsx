@@ -1,41 +1,41 @@
-﻿import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import arrowIcon from '../assets/icons/Arrow up.svg';
 import { useProducts } from '../context/ProductsContext';
 import styles from './FeaturedProducts.module.css';
 
 const FEATURED_META = [
   {
-    id: 'lofree-flow-84-white',
+    id: 'ClackLabs-flow-84-white',
     chip: 'Flow 84',
     description:
       'A 75% low-profile keyboard with a gasket mount, hot-swappable switches, and a refined aluminum frame.',
   },
   {
-    id: 'lofree-flow-lite-2-84-white',
+    id: 'ClackLabs-flow-lite-2-84-white',
     chip: 'Flow Lite 2 84',
     description:
       'A lightweight 75% board with a soft gasket feel, PBT keycaps, and tri-mode wireless connectivity.',
   },
   {
-    id: 'lofree-tofu-68',
+    id: 'ClackLabs-tofu-68',
     chip: 'Tofu 68',
     description:
       'A compact 68-key keyboard with a warm retro silhouette and a smooth, tactile typing feel.',
   },
   {
-    id: 'lofree-block-101',
+    id: 'ClackLabs-block-101',
     chip: 'Block 101',
     description:
       'A bold, blocky mechanical keyboard with customizable controls and a solid aluminum chassis.',
   },
   {
-    id: 'lofree-edge-grey',
+    id: 'ClackLabs-edge-grey',
     chip: 'Edge Grey',
     description:
       'A compact wireless keyboard with a distinctive split layout and a premium, minimalist finish.',
   },
   {
-    id: 'lofree-hyzen-silver',
+    id: 'ClackLabs-hyzen-silver',
     chip: 'Hyzen Silver',
     description:
       'A clean, silver-finished keyboard built for focused work with a crisp, responsive feel.',

@@ -4,19 +4,19 @@ const FLOW_84 = {
   details: [
     '84-key (75%) low-profile layout',
     'CNC-machined aluminum frame with gasket mount',
-    'Hot-swappable Lofree × Kailh low-profile switches',
+    'Hot-swappable Kailh low-profile switches',
     'Dye-sublimated PBT keycaps',
     'Bluetooth 5.0 and USB-C wired connectivity',
   ],
   specs: {
     Layout: '84 keys (75%)',
     Connectivity: 'Bluetooth 5.0 / USB-C wired',
-    Switches: 'Lofree × Kailh full-POM low-profile, 50±10 gf linear',
+    Switches: 'Kailh full-POM low-profile, 50±10 gf linear',
     Keycaps: 'Dye-sublimated PBT',
     Battery: '2,000 mAh — up to 40 hours',
     Dimensions: '316 × 126 × 24.5 mm',
   },
-  sourceUrl: 'https://www.lofree.co/products/lofree-flow-the-smoothest-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const FLOW_LITE_2_84 = {
@@ -33,15 +33,14 @@ const FLOW_LITE_2_84 = {
   specs: {
     Layout: '84 keys (75%)',
     Connectivity: '2.4 GHz / Bluetooth 5.3 / USB-C',
-    Switches: 'Lofree Echo 45 gf linear POM',
+    Switches: 'ClackLabs Echo 45 gf linear POM',
     Keycaps: 'Oil-resistant matte PBT',
     Battery: '3,000 mAh — up to 100 hours',
     Display: 'Battery and connection status screen',
     PollingRate: '1,000 Hz',
     Dimensions: '317 × 142.5 × 22 mm',
   },
-  sourceUrl:
-    'https://www.lofree.co/products/flow-lite-2-84-low-profile-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const FLOW_LITE_2_100 = {
@@ -62,8 +61,7 @@ const FLOW_LITE_2_100 = {
     Dimensions: '374 × 142.5 × 22 mm',
     Weight: '625 g',
   },
-  sourceUrl:
-    'https://www.lofree.co/products/flow-lite-2-100-low-profile-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const FLOW_2_68 = {
@@ -74,19 +72,19 @@ const FLOW_2_68 = {
     '1,000 Hz polling rate',
     'Tri-mode 2.4 GHz, Bluetooth 5.3, and USB-C connectivity',
     '3,000 mAh battery',
-    'Hot-swappable Lofree × Kailh Cloud switches',
+    'Hot-swappable Kailh Cloud switches',
   ],
   specs: {
     Layout: '68 keys (65%)',
     Connectivity: '2.4 GHz / Bluetooth 5.3 / USB-C',
-    Switches: 'Lofree × Kailh Cloud low-profile, hot-swappable',
+    Switches: 'Kailh Cloud low-profile, hot-swappable',
     Keycaps: 'PBT',
     Battery: '3,000 mAh',
     PollingRate: '1,000 Hz',
     Dimensions: '341.2 × 107 × 21.5 mm',
     Weight: '635 g',
   },
-  sourceUrl: 'https://www.lofree.co/products/flow-2-68-low-profile-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const FLOW_2_84 = {
@@ -97,19 +95,19 @@ const FLOW_2_84 = {
     '1,000 Hz polling rate',
     'Tri-mode 2.4 GHz, Bluetooth 5.3, and USB-C connectivity',
     '3,000 mAh battery',
-    'Hot-swappable Lofree × Kailh Cloud switches',
+    'Hot-swappable Kailh Cloud switches',
   ],
   specs: {
     Layout: '84 keys (75%)',
     Connectivity: '2.4 GHz / Bluetooth 5.3 / USB-C',
-    Switches: 'Lofree × Kailh Cloud low-profile, hot-swappable',
+    Switches: 'Kailh Cloud low-profile, hot-swappable',
     Keycaps: 'PBT',
     Battery: '3,000 mAh',
     PollingRate: '1,000 Hz',
     Dimensions: '341.2 × 126 × 21.5 mm',
     Weight: '745 g',
   },
-  sourceUrl: 'https://www.lofree.co/products/flow-2-84-low-profile-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const FLOW_2_100 = {
@@ -120,19 +118,19 @@ const FLOW_2_100 = {
     '1,000 Hz polling rate',
     'Tri-mode 2.4 GHz, Bluetooth 5.3, and USB-C connectivity',
     '3,000 mAh battery',
-    'Hot-swappable Lofree × Kailh Cloud switches',
+    'Hot-swappable Kailh Cloud switches',
   ],
   specs: {
     Layout: '100 keys (96%)',
     Connectivity: '2.4 GHz / Bluetooth 5.3 / USB-C',
-    Switches: 'Lofree × Kailh Cloud low-profile, hot-swappable',
+    Switches: 'Kailh Cloud low-profile, hot-swappable',
     Keycaps: 'PBT',
     Battery: '3,000 mAh',
     PollingRate: '1,000 Hz',
     Dimensions: '398.2 × 126 × 21.5 mm',
     Weight: '870 g',
   },
-  sourceUrl: 'https://www.lofree.co/products/flow-2-100-low-profile-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const TOFU_68 = {
@@ -141,21 +139,20 @@ const TOFU_68 = {
   details: [
     '68-key layout with an 11.5° curved typing profile',
     'Tri-mode connectivity',
-    'Custom Lofree × Gateron Tofu linear switches',
+    'Custom Gateron Tofu linear switches',
     'Dye-sublimated PBT keycaps',
     '2,000 mAh battery — up to 40 hours',
   ],
   specs: {
     Layout: '68 keys',
     Connectivity: '2.4 GHz / Bluetooth / USB-C',
-    Switches: 'Lofree × Gateron Tofu linear',
+    Switches: 'Gateron Tofu linear',
     Keycaps: 'Dye-sublimated PBT',
     Battery: '2,000 mAh — up to 40 hours',
     Ergonomics: '11.5° curved profile',
     Dimensions: '310 × 109 × 51.5 mm',
   },
-  sourceUrl:
-    'https://www.lofree.co/products/lofree-touch-triple-mode-mechanical-keyboard-tofu',
+  sourceUrl: null,
 };
 
 const BLOCK = {
@@ -176,8 +173,7 @@ const BLOCK = {
     Dimensions: '387 × 165 × 40.5 mm',
     TypingAngle: '4° / 8°',
   },
-  sourceUrl:
-    'https://www.lofree.co/products/lofree-block-wireless-mechanical-keyboard-1',
+  sourceUrl: null,
 };
 
 const EDGE = {
@@ -199,7 +195,7 @@ const EDGE = {
     Thickness: '5.4 mm ultra-slim',
     Material: 'Carbon fiber and magnesium alloy',
   },
-  sourceUrl: 'https://www.lofree.co/products/edge-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const HYzen = {
@@ -208,7 +204,7 @@ const HYzen = {
   details: [
     '65% layout with 68 keys',
     'CNC-milled aluminum case with 205-mesh sandblasted finish',
-    'Lofree × Kailh magnetic TMR switches',
+    'Kailh magnetic TMR switches',
     'Tri-mode 2.4 GHz, Bluetooth, and USB-C connectivity',
     '10,000 mAh battery',
     'Dual-knob control for audio and mode switching',
@@ -216,20 +212,20 @@ const HYzen = {
   specs: {
     Layout: '68 keys (65%)',
     Connectivity: '2.4 GHz / Bluetooth / USB-C',
-    Switches: 'Lofree × Kailh magnetic TMR',
+    Switches: 'Kailh magnetic TMR',
     Battery: '10,000 mAh',
     Wireless: 'Dual 8,000 Hz ready',
     Material: 'CNC-milled aluminum',
   },
-  sourceUrl: 'https://www.lofree.co/products/hyzen-mechanical-magnetic-keyboard',
+  sourceUrl: null,
 };
 
 const FOUNDATION = {
   description:
-    'A 75% mechanical keyboard with hot-swappable Lofree × Gateron Foundation switches, 1,000 Hz polling, and three-mode connectivity.',
+    'A 75% mechanical keyboard with hot-swappable Gateron Foundation switches, 1,000 Hz polling, and three-mode connectivity.',
   details: [
     '84-key (75%) layout',
-    'Lofree × Gateron Foundation linear switches',
+    'Gateron Foundation linear switches',
     'Hot-swappable switch sockets',
     '1,000 Hz polling rate',
     'Tri-mode 2.4 GHz, Bluetooth, and USB-C connectivity',
@@ -238,12 +234,12 @@ const FOUNDATION = {
   specs: {
     Layout: '84 keys (75%)',
     Connectivity: '2.4 GHz / Bluetooth / USB-C',
-    Switches: 'Lofree × Gateron Foundation linear, 55±15 gf',
+    Switches: 'Gateron Foundation linear, 55±15 gf',
     Travel: '1.7±0.4 mm pre-travel / 3.2±0.2 mm total',
     Keycaps: 'ABS and PC',
     PollingRate: '1,000 Hz',
   },
-  sourceUrl: 'https://www.lofree.co/products/lofree-dot-foundation-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const KEYBOARD_1970S = {
@@ -264,7 +260,7 @@ const KEYBOARD_1970S = {
     Dimensions: '325 × 160.5 × 44.4 mm',
     Weight: '972 g',
   },
-  sourceUrl: 'https://www.lofree.co/products/1970s-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const POLAR_MOSS = {
@@ -282,7 +278,7 @@ const POLAR_MOSS = {
     Switches: '40 gf linear, hot-swappable',
     PollingRate: '1,000 Hz',
   },
-  sourceUrl: 'https://www.lofree.co/products/432hz-polar-moss-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const LIPSTICK = {
@@ -303,7 +299,7 @@ const LIPSTICK = {
     PollingRate: '1,000 Hz',
     Dimensions: '325 × 160.5 × 44.4 mm',
   },
-  sourceUrl: 'https://www.lofree.co/products/lipstick-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const WONDERFREE = {
@@ -323,7 +319,7 @@ const WONDERFREE = {
     Battery: '4,000 mAh',
     Dimensions: '342.5 × 138.5 × 33.7 mm',
   },
-  sourceUrl: 'https://www.lofree.co/products/wonderfree-mechanical-keyboard',
+  sourceUrl: null,
 };
 
 const SWITCHES = {
@@ -338,7 +334,7 @@ const SWITCHES = {
       Durability: '50 million keystrokes',
       Material: 'Full POM',
     },
-    sourceUrl: 'https://www.lofree.co/products/lofree-ghost-switches',
+    sourceUrl: null,
   },
   Hades: {
     description:
@@ -351,7 +347,7 @@ const SWITCHES = {
       Durability: '50 million keystrokes',
       Material: 'Full POM',
     },
-    sourceUrl: 'https://www.lofree.co/products/hades-low-profile-pom-switches',
+    sourceUrl: null,
   },
   Phantom: {
     description:
@@ -364,7 +360,7 @@ const SWITCHES = {
       Durability: '50 million keystrokes',
       Material: 'POM',
     },
-    sourceUrl: 'https://www.lofree.co/products/lofree-phantom-switches',
+    sourceUrl: null,
   },
   Pulse: {
     description:
@@ -375,8 +371,7 @@ const SWITCHES = {
       TotalTravel: '2.8±0.25 mm',
       Material: 'POM',
     },
-    sourceUrl:
-      'https://lofreekeyboard.com/products/pulse-low-profile-pom-switches',
+    sourceUrl: null,
   },
   Specter: {
     description:
@@ -389,8 +384,7 @@ const SWITCHES = {
       Durability: '50 million keystrokes',
       Material: 'Full POM',
     },
-    sourceUrl:
-      'https://www.lofree.co/products/specter-low-profile-pom-switches',
+    sourceUrl: null,
   },
   Surfer: {
     description:
@@ -403,7 +397,7 @@ const SWITCHES = {
       Durability: '50 million keystrokes',
       Material: 'Full POM',
     },
-    sourceUrl: 'https://www.lofree.co/products/surfer-low-profile-pom-switches',
+    sourceUrl: null,
   },
   Void: {
     description:
@@ -416,47 +410,47 @@ const SWITCHES = {
       Durability: '50 million keystrokes',
       Material: 'Full POM',
     },
-    sourceUrl: 'https://www.lofree.co/products/void-low-profile-pom-switches',
+    sourceUrl: null,
   },
 };
 
 const KEYBOARDS = [
-  { test: /^Lofree Flow Lite 2 100/, data: FLOW_LITE_2_100, mac: true },
-  { test: /^Lofree Flow Lite 2 84/, data: FLOW_LITE_2_84, mac: true },
-  { test: /^Lofree Flow 2 100/, data: FLOW_2_100, mac: true },
-  { test: /^Lofree Flow 2 84/, data: FLOW_2_84, mac: true },
-  { test: /^Lofree Flow 2 68/, data: FLOW_2_68, mac: true },
-  { test: /^Lofree Flow 84/, data: FLOW_84 },
-  { test: /^Lofree Tofu 68/, data: TOFU_68 },
+  { test: /^ClackLabs Flow Lite 2 100/, data: FLOW_LITE_2_100, mac: true },
+  { test: /^ClackLabs Flow Lite 2 84/, data: FLOW_LITE_2_84, mac: true },
+  { test: /^ClackLabs Flow 2 100/, data: FLOW_2_100, mac: true },
+  { test: /^ClackLabs Flow 2 84/, data: FLOW_2_84, mac: true },
+  { test: /^ClackLabs Flow 2 68/, data: FLOW_2_68, mac: true },
+  { test: /^ClackLabs Flow 84/, data: FLOW_84 },
+  { test: /^ClackLabs Tofu 68/, data: TOFU_68 },
   {
-    test: /^Lofree Street Artist 68/,
+    test: /^ClackLabs Street Artist 68/,
     data: {
       ...TOFU_68,
       description:
-        'A Street Artist-themed edition of the 68-key Lofree Touch mechanical keyboard, combining an 11.5° ergonomic curve with tri-mode connectivity and dye-sublimated PBT keycaps.',
+        'A Street Artist-themed edition of the 68-key ClackLabs Touch mechanical keyboard, combining an 11.5° ergonomic curve with tri-mode connectivity and dye-sublimated PBT keycaps.',
     },
   },
-  { test: /^Lofree Block 101/, data: BLOCK },
-  { test: /^Lofree Edge Grey/, data: EDGE },
-  { test: /^Lofree Hyzen/, data: HYzen },
-  { test: /^Lofree Foundation 101/, data: FOUNDATION },
-  { test: /^Lofree 1970s Keyboard/, data: KEYBOARD_1970S },
+  { test: /^ClackLabs Block 101/, data: BLOCK },
+  { test: /^ClackLabs Edge Grey/, data: EDGE },
+  { test: /^ClackLabs Hyzen/, data: HYzen },
+  { test: /^ClackLabs Foundation 101/, data: FOUNDATION },
+  { test: /^ClackLabs 1970s Keyboard/, data: KEYBOARD_1970S },
   {
-    test: /^Lofree Sugar Color 70s Keyboard/,
+    test: /^ClackLabs Sugar Color 70s Keyboard/,
     data: {
       ...KEYBOARD_1970S,
       description:
         'A Sugar Color edition of the retro 1970s mechanical keyboard, pairing a 75% layout and 1,000 Hz polling with a candy-toned colorway.',
     },
   },
-  { test: /^Lofree 432Hz Polar Moss/, data: POLAR_MOSS },
-  { test: /^Lofree Lipstick Keyboard/, data: LIPSTICK },
-  { test: /^Lofree Wonderfree Keyboard/, data: WONDERFREE },
+  { test: /^ClackLabs 432Hz Polar Moss/, data: POLAR_MOSS },
+  { test: /^ClackLabs Lipstick Keyboard/, data: LIPSTICK },
+  { test: /^ClackLabs Wonderfree Keyboard/, data: WONDERFREE },
 ];
 
 function themeName(name) {
   return name
-    .replace(/^Lofree /, '')
+    .replace(/^ClackLabs /, '')
     .replace(/ Keycap Set.*$/, '')
     .replace(/ Keycaps$/, '')
     .replace(/ (68|84|100)$/, '')
@@ -466,49 +460,49 @@ function themeName(name) {
 function keycapDetails(product) {
   const flowSeries = /Flow|(?:84|100) Keycap Set/.test(product.name);
   const isBigLayout = /100|Panda 100/.test(product.name);
-  const theme = themeName(product.name) || product.name.replace(/^Lofree /, '');
+  const theme = themeName(product.name) || product.name.replace(/^ClackLabs /, '');
   const article = /^[aeiou]/i.test(theme) ? 'An' : 'A';
 
   if (flowSeries) {
     return {
-      description: `${article} ${theme} theme keycap set for Lofree Flow and Flow Lite keyboards, made from dye-sublimated PBT in Lofree's 6.3 mm Flow profile.`,
+      description: `${article} ${theme} theme keycap set for ClackLabs Flow and Flow Lite keyboards, made from dye-sublimated PBT in the 6.3 mm Flow profile.`,
       details: [
         `${isBigLayout ? '100' : '84'}-key layout`,
         'Dye-sublimated PBT construction',
-        'Lofree Flow profile (6.3 mm)',
-        'Compatible with Lofree Flow and Flow Lite keyboards',
+        'ClackLabs Flow profile (6.3 mm)',
+        'Compatible with ClackLabs Flow and Flow Lite keyboards',
         `${theme} themed legends and colorway`,
       ],
       specs: {
-        Compatibility: 'Lofree Flow / Flow Lite series',
+        Compatibility: 'ClackLabs Flow / Flow Lite series',
         Material: 'PBT',
         Legend: 'Dye-sublimated',
-        Profile: 'Lofree Flow — 6.3 mm',
+        Profile: 'ClackLabs Flow — 6.3 mm',
         Layout: isBigLayout ? '100 keys' : '84 keys',
       },
-      sourceUrl: 'https://www.lofree.co/products/retrowave',
+      sourceUrl: null,
     };
   }
 
   return {
-    description: `${article} ${theme} theme keycap set for Lofree Touch Series keyboards, made from 1.5 mm dye-sublimated PBT with Lofree's self-developed Touch profile.`,
+    description: `${article} ${theme} theme keycap set for ClackLabs Touch Series keyboards, made from 1.5 mm dye-sublimated PBT with the Touch profile.`,
     details: [
       '68-key layout',
       'Dye-sublimated PBT construction',
       '1.5 mm keycap thickness',
-      'Lofree Touch profile',
-      'Compatible with Lofree Touch Series keyboards',
+      'ClackLabs Touch profile',
+      'Compatible with ClackLabs Touch Series keyboards',
       `${theme} themed legends and colorway`,
     ],
     specs: {
-      Compatibility: 'Lofree Touch Series',
+      Compatibility: 'ClackLabs Touch Series',
       Material: 'PBT',
       Thickness: '1.5 mm',
       Legend: 'Dye-sublimated',
-      Profile: 'Lofree Touch',
+      Profile: 'ClackLabs Touch',
       Layout: '68 keys',
     },
-    sourceUrl: 'https://www.lofree.co/products/piggy-is-loving-you',
+    sourceUrl: null,
   };
 }
 
@@ -552,16 +546,16 @@ function getProductDetails(product) {
 
   return {
     description: isMoru
-      ? 'A compact Lofree mechanical keyboard with a dark, understated finish and a minimalist desktop-friendly profile.'
+      ? 'A compact ClackLabs mechanical keyboard with a dark, understated finish and a minimalist desktop-friendly profile.'
       : isTransparent
-        ? 'A Lofree mechanical keyboard with a translucent case and keycap treatment that exposes its internal structure.'
-        : `A Lofree ${product.category.toLowerCase()} from the ClackLabs collection.`,
+        ? 'A ClackLabs mechanical keyboard with a translucent case and keycap treatment that exposes its internal structure.'
+        : `A ClackLabs ${product.category.toLowerCase()} from the ClackLabs collection.`,
     details: [
       isMoru
         ? 'Moru-inspired dark finish'
         : isTransparent
           ? 'Translucent case and keycaps'
-          : 'Lofree mechanical keyboard',
+          : 'ClackLabs mechanical keyboard',
       'Mechanical key switches',
       'Desktop-friendly compact design',
     ],

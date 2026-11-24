@@ -1,4 +1,4 @@
-﻿import { useProducts } from '../context/ProductsContext';
+import { useProducts } from '../context/ProductsContext';
 import styles from './ShopCollections.module.css';
 
 const ShopCollections = ({ onNavigate }) => {
@@ -12,13 +12,13 @@ const ShopCollections = ({ onNavigate }) => {
       id: 'mechanical-keyboards',
       label: 'Mechanical Keyboards',
       category: 'Keyboards',
-      image: findProduct('lofree-flow-84-white')?.image,
+      image: findProduct('ClackLabs-flow-84-white')?.image,
     },
     {
       id: 'magnetic-keyboards',
       label: 'Magnetic Keyboards',
       category: 'Keyboards',
-      image: findProduct('lofree-hyzen-silver')?.image,
+      image: findProduct('ClackLabs-hyzen-silver')?.image,
     },
     {
       id: 'keycaps',
